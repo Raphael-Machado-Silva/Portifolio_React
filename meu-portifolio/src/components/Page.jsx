@@ -1,5 +1,7 @@
 import React, { Suspense, lazy, useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import ParticlesBackground from "./ParticlesBackground";
+import './Page.css'
 
 // Lazy loading das páginas
 const Home = lazy(() => import("../pages/Home"));
@@ -38,7 +40,7 @@ const Page = () => {
 
   useEffect(() => {
     const observer = new IntersectionObserver(handleIntersection, {
-      threshold: 0.5, // O conteúdo será considerado visível quando 50% da seção estiver visível
+      threshold: 0.5, // O conteúdo será considerado visível quando 20% da seção estiver visível
     });
 
     // Observa as seções
@@ -56,11 +58,12 @@ const Page = () => {
   }, []);
 
   return (
-    <div>
+    <div className="container-global">
+      <ParticlesBackground/>
       {/* Seções com lazy loading e animação de entrada */}
       <section id="home">
         {visibleSections.home && (
-          <Suspense fallback={<div>Carregando Home...</div>}>
+          <Suspense fallback={<div></div>}>
             <motion.div
               initial={{ x: "100%", opacity: 0 }}  // Começa da direita e invisível
               animate={{ x: 0, opacity: 1 }}       // Vai para o centro e fica visível
@@ -80,7 +83,7 @@ const Page = () => {
 
       <section id="about">
         {visibleSections.about && (
-          <Suspense fallback={<div>Carregando About...</div>}>
+          <Suspense fallback={<div></div>}>
             <motion.div
               initial={{ x: "100%", opacity: 0 }}  // Começa da direita e invisível
               animate={{ x: 0, opacity: 1 }}       // Vai para o centro e fica visível
@@ -100,7 +103,7 @@ const Page = () => {
 
       <section id="skills">
         {visibleSections.skills && (
-          <Suspense fallback={<div>Carregando Skills...</div>}>
+          <Suspense fallback={<div></div>}>
             <motion.div
               initial={{ x: "100%", opacity: 0 }}  // Começa da direita e invisível
               animate={{ x: 0, opacity: 1 }}       // Vai para o centro e fica visível
@@ -120,7 +123,7 @@ const Page = () => {
 
       <section id="timeline">
         {visibleSections.timeline && (
-          <Suspense fallback={<div>Carregando Timeline...</div>}>
+          <Suspense fallback={<div></div>}>
             <motion.div
               initial={{ x: "100%", opacity: 0 }}  // Começa da direita e invisível
               animate={{ x: 0, opacity: 1 }}       // Vai para o centro e fica visível
@@ -140,7 +143,7 @@ const Page = () => {
 
       <section id="projects">
         {visibleSections.projects && (
-          <Suspense fallback={<div>Carregando Projects...</div>}>
+          <Suspense fallback={<div></div>}>
             <motion.div
               initial={{ x: "100%", opacity: 0 }}  // Começa da direita e invisível
               animate={{ x: 0, opacity: 1 }}       // Vai para o centro e fica visível
@@ -160,7 +163,7 @@ const Page = () => {
 
       <section id="contact">
         {visibleSections.contact && (
-          <Suspense fallback={<div>Carregando Contact...</div>}>
+          <Suspense fallback={<div></div>}>
             <motion.div
               initial={{ x: "100%", opacity: 0 }}  // Começa da direita e invisível
               animate={{ x: 0, opacity: 1 }}       // Vai para o centro e fica visível

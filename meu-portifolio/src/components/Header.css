@@ -1,42 +1,177 @@
-/* src/components/Header.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
 header {
-    position: fixed; /* Torna o header fixo no topo */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 50px;
-    background-color: #333; /* Cor de fundo do header */
-    color: white; /* Cor do texto */
-    padding: 20px 0; /* Espaçamento interno */
-    text-align: center; /* Centraliza o texto */
-    z-index: 1000; /* Garante que o header ficará acima de outros elementos */
+  font-family: "Inter", sans-serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #2E2E2E;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.logo:hover{
+  filter: drop-shadow(0px 0px 5px black); /* Adicionando sombra com filtro */
+  scale: 1.02;
+}
+
+.logo img {
+  width: 120px;
+}
+
+/* Botão do menu hambúrguer */
+.hamburger-lines {
+  display: none; /* Por padrão o botão de hambúrguer está escondido */
+  flex-direction: column;
+  justify-content: space-between;
+  width: 32px;
+  height: 26px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1100; /* Garante que o botão fique acima do menu */
+  position: relative;
+}
+
+.hamburger-lines .line {
+  width: 100%;
+  height: 5px;
+  background-color: #D6CFE1;
+  border-radius: 10px;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+/* Animação das linhas */
+.hamburger-lines.open .line1 {
+  margin-left: 6px;
+  transform: rotate(45deg) translateY(15px);
+}
+
+.hamburger-lines.open .line2 {
+  opacity: 0;
+}
+
+.hamburger-lines.open .line3 {
+  margin-left: 6px;
+  transform: rotate(-45deg) translateY(-15px);
+}
+
+/* Menu lateral */
+nav {
+  position: fixed;
+  top: 0;
+  right: -100%; /* Menu fica escondido inicialmente */
+  width: 250px;
+  background: #2E2E2E;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: right 0.3s ease-in-out;
+  z-index: 1000;
+  margin-right: 0;
+  font-size: 18px;
+  padding-top: 0px;
+}
+
+nav.open {
+  right: 0; /* Menu aparece quando 'open' é adicionado */
+  height: 60vh;
+  border-radius: 0px 0px 0px 20px;
+  transition: 0.4s ease-in-out;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  text-align: center;
+  gap: 15px;
+}
+
+nav ul li {
+  margin: 25px 0 10px 0px;
+  position: relative;
+}
+
+nav ul li::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: #D6CFE1;
+  transition: width 0.3s ease, left 0.3s ease;
+  transform: translateX(-50%);
+}
+
+nav ul li:hover::after {
+  width: 100%;
+  left: 50;
+}
+
+nav ul li a {
+  color: #D6CFE1;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  color: #D6CFE1;
+  text-shadow: 0px 0px 20px #000000;
+}
+
+/* Responsividade - Menu e botão de hambúrguer em telas menores que 900px */
+@media (max-width: 900px) {
+  .hamburger-lines {
+    display: flex; /* Exibe o botão de hambúrguer */
+    margin-right: 50px;
   }
 
-  header nav{
-    display: flex;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
+  /* O menu é escondido até o botão ser clicado */
+  nav {
+    right: -100%; /* Mantém o menu escondido */
+    height: 70vh;
   }
-  
-  header nav ul {
-    display: flex;
-    justify-content: center; /* Alinha as opções de navegação no centro */
-    list-style: none;
-    padding: 0;
+
+  /* Menu abre quando 'open' é adicionado */
+  nav.open {
+    right: 0;
   }
-  
-  header nav ul li {
-    margin: 0 15px;
+}
+
+/* Para telas grandes, o menu deve ser exibido normalmente */
+@media (min-width: 901px) {
+  nav {
+    position: static;
+    width: 78vw;
+    background-color: transparent;
   }
-  
-  header nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
+
+  nav ul {
+    flex-direction: row;
+    gap: 20px;
   }
-  
-  header nav ul li a:hover {
-    color: #ffd700; /* Cor de hover para os links */
+
+  nav ul li {
+    margin: 0 20px; /* Ajuste de espaçamento */
   }
-  
+
+  .hamburger-lines {
+    display: none; /* Esconde o botão de hambúrguer em telas grandes */
+  }
+}

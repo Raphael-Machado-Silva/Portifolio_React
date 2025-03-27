@@ -4,7 +4,7 @@ import { LoadingProvider, useLoading } from "./contexts/LoadingContext";  // Imp
 import "./App.css";
 import Page from "./components/Page"; // Componente Page para as rotas
 import { BrowserRouter } from "react-router-dom";  // Importando o BrowserRouter
-import Header from "./components/Header";  // Importando o Header fixo
+import Header from "./components/Header.jsx";  // Importando o Header fixo
 
 const App = () => {
   return (
