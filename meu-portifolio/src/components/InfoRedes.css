@@ -1,0 +1,66 @@
+.div_redes{
+    position: fixed;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    background-color: transparent;
+    height: 400px;
+    width: 90px;
+    bottom: 0;
+    left: 0;
+    
+}
+
+ul{
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    margin-left: -50%;
+}
+
+li{
+    list-style: none;
+    color: #ff00;
+}
+
+.a_redes{
+    display: flex;
+    width: 60px;
+    height: 60px;
+    background: #18191f;
+    border-radius: 15px;
+    box-shadow: -2px -2px 3px #ffffff0d,
+    3px 3px 3px #00000033;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all .2s ease-in-out;
+}
+
+.fa-brands, .fa-regular{
+    font-size: 30px;
+    color: #D6CFE1;
+}
+
+/* Aplica hover roxo APENAS no primeiro li */
+li:nth-child(1) .fa-brands:hover,
+li:nth-child(1) .fa-regular:hover {
+    color: #A64FB3;
+    text-shadow: 0 0 30px #A64FB3;
+}
+
+/* Mantém a cor azul no hover do segundo li */
+li:nth-child(2) .fa-brands:hover,
+li:nth-child(2) .fa-regular:hover {
+    color: #0A78B5;
+    text-shadow: 0 0 30px #0A78B5;
+}
+
+/* Mantém a cor vermelha no hover do terceiro li */
+li:nth-child(3) .fa-brands:hover,
+li:nth-child(3) .fa-regular:hover {
+    color: #EB493B;
+    text-shadow: 0 0 30px #EB493B;
+}
+
+

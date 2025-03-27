@@ -40,7 +40,7 @@ const Page = () => {
 
   useEffect(() => {
     const observer = new IntersectionObserver(handleIntersection, {
-      threshold: 0.5, // O conteúdo será considerado visível quando 20% da seção estiver visível
+      threshold: 0.2, // O conteúdo será considerado visível quando 20% da seção estiver visível
     });
 
     // Observa as seções

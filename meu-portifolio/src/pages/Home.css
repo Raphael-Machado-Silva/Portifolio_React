@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+.home_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    margin-top: -20px;
+}
+
+
+.titles{
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.welcome{
+    color: white;
+    transition: 0.3s ease-in-out;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 100px;
+    text-shadow: 0px 0px 10px black;
+    cursor: pointer;
+    letter-spacing: 2px;
+}
+.welcome:hover{
+    color: #D6CFE1;
+}
+
+.texts{
+    max-width: 650px;
+    margin-top: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* Estilo do título */
+.intro-title, .highlight {
+    font-family: 'Inter', sans-serif;  /* Fonte moderna e legível */
+    font-size: 18px; /* Tamanho adequado para o título */
+    font-weight: 700; /* Negrito para dar ênfase */
+    color: white; /* Cor escura para o título */
+    margin: 0 0 15px 0;  /* Adiciona um espaçamento abaixo do título */
+    line-height: 1.4;  /* Melhora o espaçamento entre as linhas */
+  }
+  
+/* Estilo específico para a parte "Sou desenvolvedor front-end" */
+/* Estilo para a parte fixa "Sou" */
+h2 span.fixed {
+    color: white; /* Azul para "Sou" */
+    font-weight: bold;
+    font-size: 30px;
+  }
+  
+  /* Estilo para as palavras que vão alternar (desenvolvedor front-end, front-end developer) */
+  h2 span.changing {
+    color: #A69C94; /* Cor diferente para as palavras que alternam (vermelho) */
+    font-weight: bold;
+    font-size: 30px;
+  }
+  
+  .typing-cursor{
+    margin-left: 2px;
+    border-radius: 4px;
+    background-color: white;
+  }
+
+/* Animação para o ícone de rolar */
+@keyframes scrollAnimation {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(20px); /* Desce 20px */
+    }
+    100% {
+      transform: translateY(0); /* Sobe de volta para a posição inicial */
+    }
+  }
+  
+  /* Estilo do contêiner do ícone (ajustando o topo para centralizar) */
+  .scroll-a {
+    margin-top: 30%;
+    display: inline-block;
+  }
+  
+  /* Estilo do ícone de rolar */
+  .scroll {
+    color: white;
+    font-size: 25px;
+    animation: scrollAnimation 1s ease-in-out infinite; /* Animação contínua */
+  }
+  
+  @media (min-width: 555px){
+    .welcome{
+        font-size: 85px;
+    }
+  }
+  @media (max-width: 550px){
+    .texts{
+        width: 300px;
+    }
+    .fixed{
+        font-size: 18px;
+    }
+    .changing{
+        font-size: 18px;
+    }
+    .titles{
+        width: 90%;
+    }
+    .welcome{
+        font-size: 80px;
+    }
+  }

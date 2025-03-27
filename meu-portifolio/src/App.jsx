@@ -5,12 +5,14 @@ import "./App.css";
 import Page from "./components/Page"; // Componente Page para as rotas
 import { BrowserRouter } from "react-router-dom";  // Importando o BrowserRouter
 import Header from "./components/Header.jsx";  // Importando o Header fixo
+import InfoRedes from "./components/InfoRedes.jsx";
 
 const App = () => {
   return (
     <LoadingProvider>
       <BrowserRouter>  {/* Envolvendo a aplicação com BrowserRouter */}
         <Header />
+        <InfoRedes></InfoRedes>
         <Content />
       </BrowserRouter>
     </LoadingProvider>

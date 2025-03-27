@@ -6,9 +6,6 @@
   background-color: #f5f5f5;
 }
 
-h1 {
-  color: #333;
-}
 
 
 /* src/App.css */
@@ -75,16 +72,17 @@ h1 {
 /* App.css */
 
 section {
-  margin-top: 80px; /* Compensa a altura do header fixo */
+  /* Compensa a altura do header fixo */
   padding: 100px 20px;  /* Espaçamento interno nas seções */
-  width: 50vw;
+  width: 100vw;
+  overflow-x: hidden;
   min-height: 100vh;  /* Garante que cada seção ocupe toda a altura da tela */
-  color: black;
-  background-color: #f4f4f4; /* Cor de fundo padrão das seções */
+  color: white;
+  background-color: red; /* Cor de fundo padrão das seções */
 }
 
 section:nth-child(even) {
-  background-color: #eaeaea; /* Cor de fundo alternativa para cada seção */
+  background-color: transparent; /* Cor de fundo alternativa para cada seção */
 }
 
 
