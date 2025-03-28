@@ -120,7 +120,14 @@ h2 span.fixed {
     font-size: 25px;
     animation: scrollAnimation 1s ease-in-out infinite; /* Animação contínua */
   }
-  
+  @media (min-width: 950px){
+    .welcome{
+      font-size: 100px !important;
+    }
+    .intro-title{
+      font-size: 22px !important;
+    }
+  }
   @media (min-width: 650px){
     .titles{
       width: 70vw;

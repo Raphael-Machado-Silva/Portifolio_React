@@ -79,7 +79,7 @@ section {
   overflow-x: hidden;
   min-height: 100vh;  /* Garante que cada seção ocupe toda a altura da tela */
   color: white;
-  background-color: red; /* Cor de fundo padrão das seções */
+/* Cor de fundo padrão das seções */
 }
 
 section:nth-child(even) {
