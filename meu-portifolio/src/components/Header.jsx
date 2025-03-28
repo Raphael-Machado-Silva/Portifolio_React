@@ -29,7 +29,7 @@ const Header = () => {
 
       {/* Menu de navegação lateral */}
       <nav className={`menu ${menuOpen ? 'open' : ''}`}>
-        <ul>
+        <ul className='header_ul'>
           <li><a href="#home" onClick={() => setMenuOpen(false)}>Home</a></li>
           <li><a href="#about" onClick={() => setMenuOpen(false)}>About</a></li>
           <li><a href="#skills" onClick={() => setMenuOpen(false)}>Skills</a></li>

@@ -40,6 +40,7 @@ li{
 .fa-brands, .fa-regular{
     font-size: 30px;
     color: #D6CFE1;
+    transition: 0.3s ease-in-out;
 }
 
 /* Aplica hover roxo APENAS no primeiro li */
