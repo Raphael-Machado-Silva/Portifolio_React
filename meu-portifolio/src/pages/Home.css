@@ -110,7 +110,7 @@ h2 span.fixed {
   
   /* Estilo do contêiner do ícone (ajustando o topo para centralizar) */
   .scroll-a {
-    margin-top: 20%;
+    margin-top: 18%;
     display: inline-block;
   }
   
@@ -121,15 +121,19 @@ h2 span.fixed {
     animation: scrollAnimation 1s ease-in-out infinite; /* Animação contínua */
   }
   
-  @media (min-width: 555px){
+  @media (min-width: 650px){
+    .titles{
+      width: 70vw;
+    }
     .welcome{
         font-size: 85px;
+        text-align: center;
     }
     .texts{
       margin-top: 5%;
     }
   }
-  @media (max-width: 550px){
+  @media (max-width: 650px){
     .texts{
         width: 70vw;
         margin-top: -10%;
@@ -145,7 +149,7 @@ h2 span.fixed {
     }
     .welcome{
         font-size: 80px;
-        text-align: center;
+        text-align: left;
         margin-top: -10%;
     }
     .div-changing{
@@ -161,5 +165,24 @@ h2 span.fixed {
     }
     h2 span.changing{
       font-size: 24px;
+    }
+    .scroll-a{
+      margin-top: 5%;
+    }
+  }
+
+  @media (max-width: 480px){
+    .titles{
+      margin-top: -20%;
+    }
+    .texts{
+      padding-left: 60px;
+    }
+    h2 span.fixed{
+      font-size: 20px;
+      margin-left: 15px;
+    }
+    h2 span.changing{
+      font-size: 22px;
     }
   }
