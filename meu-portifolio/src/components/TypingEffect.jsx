@@ -45,8 +45,8 @@ const TypingEffect = () => {
   }, [currentText, isDeleting, currentIndex, speed]);
 
   return (
-    <div>
-      <h2>
+    <div className="div-changing">
+      <h2 className="h2-changing">
         <span className="fixed">{fixedText}</span>
         <span className="changing">{currentText.slice(fixedText.length)}</span>
         <span className="typing-cursor">I</span>
