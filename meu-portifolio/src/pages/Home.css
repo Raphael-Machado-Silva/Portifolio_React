@@ -124,6 +124,7 @@ h2 span.fixed {
   @media (min-width: 650px){
     .titles{
       width: 70vw;
+      margin-top: -5%;
     }
     .welcome{
         font-size: 85px;
@@ -136,7 +137,7 @@ h2 span.fixed {
   @media (max-width: 650px){
     .texts{
         width: 70vw;
-        margin-top: -10%;
+        margin-top: -12%;
     }
     .fixed{
         font-size: 18px;
