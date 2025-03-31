@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+.service{
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0;
+    margin-top: -10%;
+}
+.service-offices {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas */
+    gap: 20px;
+    justify-content: center;
+    max-width: 800px; /* Ajuste para não ficar muito largo */
+    margin: 0 auto; /* Centraliza */
+  }
+  
+  .service_title {
+    position: relative;
+    text-align: center;
+    margin-bottom: -30px;
+  }
+  
+  .main-titlee {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    position: relative;
+    text-align: center;
+    color: #D6CFE1;
+    cursor: pointer;
+    font-family: 'Bebas Neue';
+    transition: 0.4s ease-in-out;
+  }
+
+  .main-titlee:hover{
+    color: white;
+  }
+  
+   /* Título de fundo */
+   .background-title-service {
+    position: absolute;
+    top: 65%; /* Coloca o título no meio do container */
+    left: 50%;
+    transform: translate(-50%, -105%); /* Centraliza perfeitamente */
+    font-size: 10rem;
+    color: rgba(0, 0, 0, 0.205);
+    font-weight: bolder;
+    z-index: -1;
+    white-space: nowrap;
+    font-family: 'Bebas Neue';
+  }
+  .service-offices {
+    display: grid; /* Usa Grid ao invés de Flex */
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas */
+    gap: 30px; /* Espaçamento entre os itens */
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    padding: 0;
+    max-width: 750px;
+    margin-top: 10%;
+  }
+  
+  .service-info {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 45px;
+    border-radius: 15px;
+    background-color: #2E2E2E;
+    color: white;
+    box-shadow: 0px 0px 3px #D6CFE1;
+    transition: 0.3s ease;
+    cursor: pointer;
+  }
+
+  .service-info:hover{
+    background-color: #242424;
+    color: #D6CFE1;
+  }
+  
+  .service-info:hover {
+    transform: scale(1.05); /* Efeito de leve crescimento no hover */
+  }
+  
+  .service-icon {
+    font-size: 30px;
+  }
+  
+  .service-text {
+    font-size: 18px;
+    text-align: center;
+  }
+  
+  /* Tooltip - Descrição do Serviço */
+  .service-description {
+    position: absolute;
+    bottom: -80px; /* Ajusta a posição para abaixo da caixinha */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 240px;
+    background-color: #D6CFE1;
+    color: black;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 100;
+  }
+  
+  /* Exibir a descrição quando passar o mouse sobre a setinha */
+  .tooltip-arrow:hover + .service-description {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-10px); /* Leve deslocamento */
+  }
+  
+  /* Setinha abaixo do título */
+  .tooltip-arrow {
+    position: absolute; /* Fixa a setinha em relação à .service-info */
+    bottom: 20px; /* Posiciona abaixo da caixinha */
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.4s ease;
+  }
+  
+  /* Efeito ao passar o mouse sobre a setinha */
+  .tooltip-arrow:hover {
+    scale: 1.1;
+  }
+  
+  @media (max-width: 650px){
+    .service-offices {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr); /* 2 colunas */
+        gap: 30px;
+        justify-content: center;
+        max-width: 800px; /* Ajuste para não ficar muito largo */
+        margin: auto; /* Centraliza */
+      }
+      .service_title{
+        margin-bottom: 70px;
+      }
+      .service-info{
+        width: 250px;
+        height: 120px;
+      }
+  }

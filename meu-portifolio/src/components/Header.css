@@ -13,7 +13,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  z-index: 1000;
+  z-index: 10001;
 }
 
 .logo {
@@ -73,25 +73,23 @@ header {
 nav {
   position: fixed;
   top: 0;
-  right: -100%; /* Menu fica escondido inicialmente */
+  right: -100%; /* Menu começa fora da tela */
   width: 250px;
   background: #2E2E2E;
   display: flex;
   flex-direction: column;
   justify-content: center; /* Centraliza os itens verticalmente */
   align-items: center; /* Centraliza os itens horizontalmente */
-  transition: right 0.3s ease-in-out;
+  transition: right 0.3s ease-in-out; /* Animação para abrir e fechar */
   z-index: 1000;
   font-size: 18px;
   padding-top: 0px;
-  height: 100vh; /* Faz o menu ocupar toda a altura da tela */
+  height: 100vh; /* Menu ocupa toda a altura da tela */
+  overflow: hidden;
 }
 
 nav.open {
   right: 0; /* Menu aparece quando 'open' é adicionado */
-  height: 60vh;
-  border-radius: 0px 0px 0px 20px;
-  transition: 0.4s ease-in-out;
 }
 
 nav ul {
@@ -107,6 +105,7 @@ nav ul {
 nav ul li {
   margin: 25px 0 10px 0px;
   position: relative;
+  display: inline-block;
 }
 
 nav ul li::after {
@@ -146,34 +145,46 @@ nav ul li a:hover {
   /* O menu é escondido até o botão ser clicado */
   nav {
     right: -100%; /* Mantém o menu escondido */
-    height: 70vh;
+    height: 60vh; /* Define a altura do menu quando aberto em telas pequenas */
+    overflow: hidden;
+    border-bottom-left-radius: 30px;
   }
 
-  nav ul{
+  nav.open {
+    right: 0; /* Menu aparece quando 'open' é adicionado */
+  }
+  
+  nav ul {
     width: 100%; /* Garante que o menu ocupe toda a largura disponível */
     margin: 0; /* Remove margens automáticas */
   }
-  /* Menu abre quando 'open' é adicionado */
-  nav.open {
-    right: 0;
-    background-color: blue;
+  nav ul li {
+    display: inline-block; /* Permite que a linha seja limitada ao texto */
   }
-  .header_ul{
-    background-color: red;
-    width: 30%;
+  
+  nav ul li::after {
+    left: 50; /* A linha vai começar da borda esquerda do texto */
+    width: 0; /* Começa com a linha invisível */
+  }
+
+  nav ul li:hover::after {
+    width: 30%; /* Quando o item for hovered, a linha vai ocupar toda a largura do texto */
   }
 }
 
 /* Para telas grandes, o menu deve ser exibido normalmente */
 @media (min-width: 901px) {
   nav {
-    position: static;
+    position: static; /* Menu fica no fluxo normal da página */
     width: 60vw;
     background-color: transparent;
+    right: 0; /* Menu é exibido normalmente sem animação */
+    height: auto; /* Garante que o menu tenha altura automática */
+    overflow: visible; /* O conteúdo será visível e o menu ocupará seu espaço natural */
   }
 
   nav ul {
-    flex-direction: row;
+    flex-direction: row; /* Exibe os itens de forma horizontal */
     gap: 20px;
   }
 

@@ -74,7 +74,7 @@
 
 section {
   /* Compensa a altura do header fixo */
-  padding: 100px 20px;  /* Espaçamento interno nas seções */
+  padding: 100px 0px;  /* Espaçamento interno nas seções */
   width: 100vw;
   overflow-x: hidden;
   min-height: 100vh;  /* Garante que cada seção ocupe toda a altura da tela */
