@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+  /* Timeline Container */
+  .timeline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: auto;
+    padding: 40px;
+  }
+
+  /* Container do título */
+  .titles_background_timeline {
+    position: relative;
+    text-align: center; /* Centraliza o conteúdo dentro do container */
+    font-family: 'Bebas Neue';
+    margin-bottom: 65px;
+  }
+
+  .main-title {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    position: relative;
+    text-align: center;
+    color: #D6CFE1;
+    transition: 0.4s ease-in-out;
+    cursor: pointer;
+  }
+
+  .main-title:hover{
+    color: white;
+  }
+
+  /* Título de fundo */
+  .background-title-timeline {
+    position: absolute;
+    top: 50%; /* Coloca o título no meio do container */
+    left: 50%;
+    transform: translate(-50%, -95%); /* Centraliza perfeitamente */
+    font-size: 8rem;
+    color: rgba(0, 0, 0, 0.205);
+    font-weight: bolder;
+    z-index: -1;
+    white-space: nowrap;
+  }
+  
+  /* Card container */
+  .card {
+    position: relative;
+  }
+  
+  /* setting padding based on even or odd */
+  .card:nth-child(odd) {
+    padding: 30px 0 30px 30px;
+  }
+  .card:nth-child(even) {
+    padding: 30px 30px 30px 0;
+  }
+  
+  /* Linha padrão (laranja) */
+  .card::before {
+    content: "";
+    position: absolute;
+    width: 50%;
+    border: solid #2E2E2E;
+    transition: border-color 1s ease-in-out; /* mais suave e lenta */
+  }
+  
+  /* Linha ativa (azul) */
+  .card.active::before {
+    border-color:#D6CFE1;
+  }
+  
+  /* Pontinho (bolinha) também muda de cor */
+  .card.active .title::before {
+    border-color: #2E2E2E;
+    background: white;
+  }
+  
+  /* Setting the border of top, bottom, left */
+  .card:nth-child(odd)::before {
+    left: 0px;
+    top: -5.6px;
+    bottom: -5px;
+    border-width: 5px 0 5px 5px;
+    border-radius: 50px 0 0 50px;
+  }
+  
+  /* Setting the top and bottom to "-5px" because earlier it was out of a pixel in mobile devices */
+  @media only screen and (max-width: 400px) {
+    .card:nth-child(odd)::before {
+      top: -5px;
+      bottom: -5px;
+    }
+  }
+  
+  /* Setting the border of top, bottom, right */
+  .card:nth-child(even)::before {
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-width: 5px 5px 5px 0;
+    border-radius: 0 50px 50px 0;
+  }
+  
+  /* Removing the border if it is the first card */
+  .card:first-child::before {
+    border-top: 0;
+    border-top-left-radius: 0;
+  }
+  
+  /* Removing the border if it is the last card  and it's odd */
+  .card:last-child:nth-child(odd)::before {
+    border-bottom: 0;
+    border-bottom-left-radius: 0;
+  }
+  
+  /* Removing the border if it is the last card  and it's even */
+  .card:last-child:nth-child(even)::before {
+    border-bottom: 0;
+    border-bottom-right-radius: 0;
+  }
+  
+  .info {
+    display: flex;
+    flex-direction: column;
+    background: #333;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 3px -3px 10px 0px rgba(0, 0, 0, 0.363);
+    cursor: pointer;
+  }
+  
+  /* Par (2º, 4º, etc): sombra invertida para esquerda */
+  .card:nth-child(even) .info {
+    box-shadow: -3px -3px 10px 0px rgba(0, 0, 0, 0.363);
+  }
+  
+  
+  .title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: #D6CFE1;
+    position: relative;
+    display: inline-block;
+    padding-right: 10px;
+    padding-left: 10px;
+    transition: 0.5s ease;
+  }
+
+  .title:hover{
+    color: white;
+  }
+  
+  /* Substituto do ::before — agora com ícone */
+  .title .dot {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-31%);
+    width: 40px;
+    height: 40px;
+    background: #2E2E2E;
+    border: 3px solid #2E2E2E;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: white;
+    transition: border-color 0.6s ease, color 0.6s ease;
+    z-index: 2;
+  }
+  
+  /* Ímpar: bolinha à esquerda */
+  .card:nth-child(odd) .title .dot {
+    left: -60px;
+    top: 10px;
+  }
+  
+  /* Par: bolinha à direita */
+  .card:nth-child(even) .title .dot {
+    right: -60px;
+    top: 5px;
+  }
+  
+  /* Quando ativado: muda cor */
+  .card.active .title .dot {
+    border-color: white;
+    color: white;
+  }
+  
+  
+  .title .icon {
+    font-size: 20px;
+  }
+  
+  /* Quando ativo */
+  .card.active .title .icon {
+    color: dodgerblue;
+  }
+  
+  
+  /* Timeline dot  */
+  .title::before {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 999px;
+    border: 3px solid orangered;
+    transition: border-color 1s ease-in-out, background 1s ease-in-out;
+  }
+  
+  /* text right if the card is even  */
+  .card:nth-child(even) > .info > .title {
+    text-align: right;
+  }
+  
+  /* setting dot to the left if the card is odd */
+  .card:nth-child(odd) > .info > .title::before {
+    left: -45px;
+  }
+  
+  /* setting dot to the right if the card is odd */
+  .card:nth-child(even) > .info > .title::before {
+    right: -45px;
+  }
+
+  .content-p{
+    font-family: 'Inter', sans-serif;
+    max-width: 500px;
+    margin-top: -15px;
+    padding: 2px;
+    font-size: 18px;
+  }
+  .card:nth-child(even) .content-p {
+    text-align: right;
+    padding-right: 5px;
+  }
+  
+  .card:nth-child(odd) .content-p {
+    text-align: left;
+    padding-left: 5px;
+  }
+  
