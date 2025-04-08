@@ -60,7 +60,7 @@ export default function BasicTimeline() {
 
       <div className="titles_background_timeline">
           <h2 className="background-title-timeline">TIMELINE</h2>
-          <h1 className="main-title">Linha do Tempo</h1>
+          <h1 className="main-title obj">Linha do Tempo</h1>
       </div>
 
       <div className="outer">
@@ -71,9 +71,9 @@ export default function BasicTimeline() {
             ref={(el) => (cardsRef.current[index] = el)}
           >
             <div className="info">
-              <h3 className="title">
+              <h3 className="title obj">
                 {/* Aqui é onde antes era o ::before */}
-                <div className="dot">{item.icon}</div>
+                <div className="dot obj">{item.icon}</div>
                 {item.title}
               </h3>
               <p className="content-p">{item.content}</p>

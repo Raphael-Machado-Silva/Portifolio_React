@@ -2,6 +2,7 @@ import React, { Suspense, lazy, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import ParticlesBackground from "./ParticlesBackground";
 import './Page.css';
+import CustomCursor from "./CustomCursor";
 
 // Lazy loading das páginas
 const Home = lazy(() => import("../pages/Home"));
@@ -16,7 +17,7 @@ const Page = () => {
   const [visibleSections, setVisibleSections] = useState({
     home: false,
     about: false,
-    services: false,  // Adicionando services
+    services: false,
     skills: false,
     timeline: false,
     projects: false,
@@ -25,16 +26,23 @@ const Page = () => {
 
   const handleIntersection = (entries) => {
     entries.forEach((entry) => {
-      setVisibleSections((prev) => ({
-        ...prev,
-        [entry.target.id]: entry.isIntersecting,
-      }));
+      const id = entry.target.id;
+      const ratio = entry.intersectionRatio;
+
+      setVisibleSections((prev) => {
+        if (ratio >= 0.3) {
+          return { ...prev, [id]: true }; // Mostrar ao atingir 30%
+        } else if (ratio <= 0.15) {
+          return { ...prev, [id]: false }; // Esconder ao cair para 15% ou menos
+        }
+        return prev; // Não faz nada entre 15% e 30%
+      });
     });
   };
 
   useEffect(() => {
     const observer = new IntersectionObserver(handleIntersection, {
-      threshold: 0.2,
+      threshold: [0, 0.15, 0.3, 1],
     });
 
     const sections = document.querySelectorAll("section");
@@ -45,108 +53,40 @@ const Page = () => {
     };
   }, []);
 
+  const renderSection = (id, Component) => (
+    <section id={id}>
+      {visibleSections[id] && (
+        <Suspense fallback={<div></div>}>
+          <motion.div
+            initial={{ x: "100%", opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{
+              type: "spring",
+              stiffness: 50,
+              damping: 20,
+              duration: 1.5,
+              delay: 0.2,
+            }}
+          >
+            <Component />
+          </motion.div>
+        </Suspense>
+      )}
+    </section>
+  );
+
   return (
     <div className="container-global">
       <ParticlesBackground />
+      <CustomCursor />
 
-      <section id="home">
-        {visibleSections.home && (
-          <Suspense fallback={<div></div>}>
-            <motion.div
-              initial={{ x: "100%", opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ type: "spring", stiffness: 50, damping: 20, duration: 1.5, delay: 0.2 }}
-            >
-              <Home />
-            </motion.div>
-          </Suspense>
-        )}
-      </section>
-
-      <section id="about">
-        {visibleSections.about && (
-          <Suspense fallback={<div></div>}>
-            <motion.div
-              initial={{ x: "100%", opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ type: "spring", stiffness: 50, damping: 20, duration: 1.5, delay: 0.2 }}
-            >
-              <About />
-            </motion.div>
-          </Suspense>
-        )}
-      </section>
-
-      {/* Nova Seção Services */}
-      <section id="services">
-        {visibleSections.services && (
-          <Suspense fallback={<div></div>}>
-            <motion.div
-              initial={{ x: "100%", opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ type: "spring", stiffness: 50, damping: 20, duration: 1.5, delay: 0.2 }}
-            >
-              <Services />
-            </motion.div>
-          </Suspense>
-        )}
-      </section>
-
-      <section id="skills">
-        {visibleSections.skills && (
-          <Suspense fallback={<div></div>}>
-            <motion.div
-              initial={{ x: "100%", opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ type: "spring", stiffness: 50, damping: 20, duration: 1.5, delay: 0.2 }}
-            >
-              <Skills />
-            </motion.div>
-          </Suspense>
-        )}
-      </section>
-
-      <section id="timeline">
-        {visibleSections.timeline && (
-          <Suspense fallback={<div></div>}>
-            <motion.div
-              initial={{ x: "100%", opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ type: "spring", stiffness: 50, damping: 20, duration: 1.5, delay: 0.2 }}
-            >
-              <Timeline />
-            </motion.div>
-          </Suspense>
-        )}
-      </section>
-
-      <section id="projects">
-        {visibleSections.projects && (
-          <Suspense fallback={<div></div>}>
-            <motion.div
-              initial={{ x: "100%", opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ type: "spring", stiffness: 50, damping: 20, duration: 1.5, delay: 0.2 }}
-            >
-              <Projects />
-            </motion.div>
-          </Suspense>
-        )}
-      </section>
-
-      <section id="contact">
-        {visibleSections.contact && (
-          <Suspense fallback={<div></div>}>
-            <motion.div
-              initial={{ x: "100%", opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ type: "spring", stiffness: 50, damping: 20, duration: 1.5, delay: 0.2 }}
-            >
-              <Contact />
-            </motion.div>
-          </Suspense>
-        )}
-      </section>
+      {renderSection("home", Home)}
+      {renderSection("about", About)}
+      {renderSection("services", Services)}
+      {renderSection("skills", Skills)}
+      {renderSection("timeline", Timeline)}
+      {renderSection("projects", Projects)}
+      {renderSection("contact", Contact)}
     </div>
   );
 };

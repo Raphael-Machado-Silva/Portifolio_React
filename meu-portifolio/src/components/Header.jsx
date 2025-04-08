@@ -13,13 +13,13 @@ const Header = () => {
 
   return (
     <header>
-      <div className="logo">
+      <div className="logo obj">
         <img src={logo} alt="Logo" />
       </div>
 
       {/* Botão do menu hambúrguer (só aparece em telas menores que 900px) */}
       <div
-        className={`hamburger-lines ${menuOpen ? 'open' : ''}`}
+        className={`hamburger-lines obj ${menuOpen ? 'open' : ''}`}
         onClick={toggleMenu}
       >
         <span className="line line1"></span>
@@ -30,12 +30,12 @@ const Header = () => {
       {/* Menu de navegação lateral */}
       <nav className={`menu ${menuOpen ? 'open' : ''}`}>
         <ul className='header_ul'>
-          <li><a href="#home" onClick={() => setMenuOpen(false)}>Home</a></li>
-          <li><a href="#about" onClick={() => setMenuOpen(false)}>About</a></li>
-          <li><a href="#skills" onClick={() => setMenuOpen(false)}>Skills</a></li>
-          <li><a href="#timeline" onClick={() => setMenuOpen(false)}>Timeline</a></li>
-          <li><a href="#projects" onClick={() => setMenuOpen(false)}>Projects</a></li>
-          <li><a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a></li>
+          <li><a href="#home" className='obj' onClick={() => setMenuOpen(false)}>Home</a></li>
+          <li><a href="#about" className='obj' onClick={() => setMenuOpen(false)}>About</a></li>
+          <li><a href="#skills" className='obj' onClick={() => setMenuOpen(false)}>Skills</a></li>
+          <li><a href="#timeline" className='obj' onClick={() => setMenuOpen(false)}>Timeline</a></li>
+          <li><a href="#projects" className='obj' onClick={() => setMenuOpen(false)}>Projects</a></li>
+          <li><a href="#contact" className='obj' onClick={() => setMenuOpen(false)}>Contact</a></li>
         </ul>
       </nav>
     </header>

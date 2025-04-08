@@ -7,8 +7,8 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 0;
-    margin-top: -10%;
+    padding-top: 50px;
+    margin-top: 10%;
 }
 .service-offices {
     display: grid;
@@ -142,6 +142,9 @@
   }
   
   @media (max-width: 650px){
+    .service{
+        padding-top: 200px;
+    }
     .service-offices {
         display: grid;
         grid-template-columns: repeat(1, 1fr); /* 2 colunas */
@@ -157,4 +160,10 @@
         width: 250px;
         height: 120px;
       }
+  }
+
+  @media (max-width: 400px){
+    .service{
+      padding-top: 400px;
+    }
   }

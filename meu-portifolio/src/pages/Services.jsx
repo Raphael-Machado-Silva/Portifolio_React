@@ -29,7 +29,7 @@ const Services = () => {
   return (
     <section id="services" className="service">
       <div className="service_title">
-        <h2 className="main-titlee">O que eu ofereço?</h2>
+        <h2 className="main-titlee obj">O que eu ofereço?</h2>
         <h2 className="background-title-service">SERVIÇOS</h2>
       </div>
       <div className="service-offices">
@@ -41,14 +41,14 @@ const Services = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.2 }}
           >
-            <div className="service-icon">
+            <div className="service-icon obj">
               <i className={service.icon}></i>
             </div>
-            <div className="service-text">
+            <div className="service-text obj">
               <p>{service.title}</p>
             </div>
             <div className="tooltip-wrapper">
-              <div className="tooltip-arrow"><i className="fa-solid fa-circle-info"></i></div>
+              <div className="tooltip-arrow obj"><i className="fa-solid fa-circle-info"></i></div>
               <div className="service-description">{service.description}</div>
             </div>
           </motion.div>

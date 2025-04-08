@@ -9,6 +9,7 @@
     padding: 50px;
     max-width: 1200px;
     margin-top: 10%;
+    padding-top: 150px;
     margin: auto;
     position: relative;
   }
@@ -119,6 +120,7 @@
     .about-container {
         flex-direction: column;
         gap: 40px;
+        margin-bottom: 10%;
     }
     .about-text{
         width: 90%;

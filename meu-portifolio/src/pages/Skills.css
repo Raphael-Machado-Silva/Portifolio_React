@@ -9,6 +9,8 @@
     justify-content: center;
     height: 600px;
     margin-top: 100px;
+    padding-bottom: 100px;
+    padding-top: 100px;
 }
   /* Container do título */
   .titles_background {
@@ -115,6 +117,9 @@
   
 
   @media (max-width: 850px){
+    .container-global-skills{
+     margin-top: 45%;
+    }
     .skills-container{
         margin-top: 20px;
         flex-direction: column;
@@ -137,6 +142,11 @@
   }
 
   @media (max-width: 600px){
+    .container-global-skills{
+      height: 500px;
+      
+      margin-top: 75%;
+    }
     .skills-sidebar{
         width: 90%;
     }
@@ -149,5 +159,11 @@
     .background-title-skills{
         font-size: 6.5rem;
         transform: translate(-50%, -92%);
+    }
+  }
+
+  @media (max-width: 450px){
+    .container-global-skills{
+      margin-top: 180%;
     }
   }

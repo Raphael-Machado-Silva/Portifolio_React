@@ -62,7 +62,7 @@ const Skills = () => {
     <div className="container-global-skills">
       <div className="titles_background">
           <h2 className="background-title-skills">Habilidades</h2>
-          <h1 className="main-title">Skills</h1>
+          <h1 className="main-title obj">Skills</h1>
       </div>
 
       <div className="skills-container">
@@ -72,7 +72,7 @@ const Skills = () => {
         {Object.keys(skillsData).map((category) => (
           <button
             key={category}
-            className={selectedCategory === category ? "active" : ""}
+            className={selectedCategory === category ? "active obj" : "obj"}
             onClick={() => setSelectedCategory(category)}
           >
             {category}

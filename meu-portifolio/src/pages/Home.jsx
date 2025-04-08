@@ -42,7 +42,7 @@ const Home = () => {
   return (
     <div className="home_container">
       <div className="titles">
-        <h1 className="welcome">BEM-VINDO AO MEU PORTIFÓLIO</h1>
+        <h1 className="welcome obj">BEM-VINDO AO MEU PORTIFÓLIO</h1>
         <div className="texts">
           <div className="intro-container">
             <h2 className="intro-title">Me chamo <span className="highlight">Raphael Machado</span> e estou aqui para te ajudar!</h2>
@@ -51,8 +51,8 @@ const Home = () => {
           {/* Substitua o texto fixo por TypingEffect */}
           <TypingEffect />
           {/* Link de rolagem suave */}
-          <a href="#about" className="scroll-a" onClick={handleScrollToAbout}>
-            <i className="fa-solid fa-computer-mouse scroll"></i>
+          <a href="#about" className="scroll-a obj" onClick={handleScrollToAbout}>
+            <i className="fa-solid fa-computer-mouse scroll obj"></i>
           </a>
         </div>
       </div>

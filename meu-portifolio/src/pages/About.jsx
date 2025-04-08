@@ -9,7 +9,7 @@ const About = () => {
       <div className="about-text">
         <div className="titles_background">
           <h2 className="background-title">Sobre Mim</h2>
-          <h1 className="main-title">Sobre Mim</h1>
+          <h1 className="main-title obj">Sobre Mim</h1>
         </div>
         <p className="history">
           Olá! Meu nome é Seu Nome, sou sua profissão ou interesse. 
@@ -21,7 +21,7 @@ const About = () => {
 
       {/* Seção da foto */}
       <div className="about-image">
-        <img src={PerfilImg} alt="Minha Foto" className="picture" />
+        <img src={PerfilImg} alt="Minha Foto" className="picture obj" />
       </div>
     </div>
   );

@@ -48,7 +48,7 @@ const TypingEffect = () => {
     <div className="div-changing">
       <h2 className="h2-changing">
         <span className="fixed">{fixedText}</span>
-        <span className="changing">{currentText.slice(fixedText.length)}</span>
+        <span className="changing obj">{currentText.slice(fixedText.length)}</span>
         <span className="typing-cursor">I</span>
       </h2>
     </div>
