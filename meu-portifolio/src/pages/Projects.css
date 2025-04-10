@@ -1,0 +1,84 @@
+.projects-section {
+  height: 400vh;
+  background-color: #111;
+  position: relative;
+  margin-top: 400px ;
+  margin-bottom: 400px;
+}
+
+.sticky-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+}
+
+.invisible {
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+
+
+.sticky-container.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.sticky-container.released {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.cards-scroll-track {
+  display: flex;
+  gap: 2rem;
+  padding: 0 4rem;
+  will-change: transform;
+}
+
+.cardd {
+  flex: 0 0 auto;
+  width: 450px;
+  height: 450px;
+  position: relative;
+  background-color: #ccc;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.card-image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.3s ease;
+  z-index: 0;
+}
+
+.cardd:hover .card-image {
+  transform: scale(1.1);
+}
+
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+}
+
+.card-text {
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
