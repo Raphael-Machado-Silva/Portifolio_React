@@ -17,10 +17,10 @@ const Projects = () => {
   const [trackWidth, setTrackWidth] = useState(0);
   const [isExiting, setIsExiting] = useState(false);
   const [scrollDirection, setScrollDirection] = useState("down");
+  const [selectedProject, setSelectedProject] = useState(null);
 
-  const scrollY = useMotionValue(0);
-  const x = useMotionValue(0); // valor de scroll calculado via transform
-  const xManual = useMotionValue(0); // usado para animação manual na saída
+  const x = useMotionValue(0);
+  const xManual = useMotionValue(0);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -33,7 +33,6 @@ const Projects = () => {
     [0, -trackWidth + window.innerWidth]
   );
 
-  // Detecta direção do scroll
   useEffect(() => {
     let lastY = window.scrollY;
 
@@ -47,7 +46,6 @@ const Projects = () => {
     return () => window.removeEventListener("scroll", handleScrollDir);
   }, []);
 
-  // Atualiza o valor de x e xManual quando scroll acontece (não em animação)
   useEffect(() => {
     const unsubscribe = scrollX.on("change", (latest) => {
       if (!isExiting) {
@@ -65,9 +63,7 @@ const Projects = () => {
 
       const rect = sectionRef.current.getBoundingClientRect();
       const middleOfScreen = window.innerHeight / 2;
-
-      const inMiddle =
-        rect.top < middleOfScreen && rect.bottom > middleOfScreen;
+      const inMiddle = rect.top < middleOfScreen && rect.bottom > middleOfScreen;
 
       if (inMiddle && !isStuck && !isExiting) {
         setIsStuck(true);
@@ -126,7 +122,11 @@ const Projects = () => {
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
           {cards.map((card) => (
-            <div key={card.id} className="cardd">
+            <div
+              key={card.id}
+              className="cardd"
+              onClick={() => setSelectedProject(card)}
+            >
               <div
                 className="card-image"
                 style={{ backgroundImage: `url(${card.url})` }}
@@ -138,6 +138,31 @@ const Projects = () => {
           ))}
         </motion.div>
       </div>
+
+      {/* Modal de Projeto */}
+      {selectedProject && (
+        <div className="project-modal">
+          <button
+            className="close-button"
+            onClick={() => setSelectedProject(null)}
+          >
+            ✕ Fechar
+          </button>
+          <h2>{selectedProject.title}</h2>
+          <p>
+            Aqui você pode colocar uma descrição do projeto, tecnologias usadas,
+            link para o GitHub, deploy, etc.
+          </p>
+          <div className="modal-footer">
+            <button
+              className="bottom-close-button"
+              onClick={() => setSelectedProject(null)}
+            >
+              Fechar Janela
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
