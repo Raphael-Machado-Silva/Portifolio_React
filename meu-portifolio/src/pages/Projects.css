@@ -94,9 +94,10 @@
   top: 50%;
   left: 50%;
   width: 90%;
-  max-width: 600px;
+  max-width: 400px;
   padding: 2rem;
-  background: #1e1e1e;
+  padding-top: 1rem !important;
+  background: #242424;
   border-radius: 1rem;
   transform: translate(-50%, -50%) !important;
   z-index: 999;
@@ -104,12 +105,18 @@
   color: white;
 }
 
+.info_cards_title{
+  font-size: 24px;
+  font-family: 'inter', sans-serif;
+  letter-spacing: 1px;
+}
+
 .close-button {
   position: absolute;
   top: 1rem;
   right: 1rem;
   border: none;
-  background: #f44336;
+  background:  #c02a2a;
   color: white;
   font-size: 1rem;
   padding: 0.5rem 1rem;
@@ -119,7 +126,15 @@
 }
 
 .close-button:hover {
-  background: #d32f2f;
+  background: #f44336;
+}
+
+.info_cards_description{
+  padding: 5px;
+  font-family: 'inter', sans-serif;
+  font-weight: 300;
+  text-indent: 10px;
+  text-align: left;
 }
 
 .modal-footer {
@@ -179,6 +194,8 @@
 .modal-links{
   gap: 40px;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .fancy-btn {
@@ -242,3 +259,29 @@
   height: 100%;
 }
 
+
+
+
+
+
+.tech-tags {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.tech-tag {
+  font-family: 'Bebas Neue';
+  padding: 6px 12px;
+  border-radius: 9999px;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  font-weight: 500;
+  white-space: nowrap;
+  color: black;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
