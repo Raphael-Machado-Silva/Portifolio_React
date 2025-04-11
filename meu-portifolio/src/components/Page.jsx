@@ -1,8 +1,10 @@
 import React, { Suspense, lazy, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import ParticlesBackground from "./ParticlesBackground";
-import "./Page.css";
 import CustomCursor from "./CustomCursor";
+import FancyTitle from "../components/FancyTitle"; // IMPORTANTE
+
+import "./Page.css";
 
 const Home = lazy(() => import("../pages/Home"));
 const About = lazy(() => import("../pages/About"));
@@ -13,16 +15,24 @@ const Projects = lazy(() => import("../pages/Projects"));
 const Contact = lazy(() => import("../pages/Contact"));
 
 const sectionsList = [
-  { id: "home", component: Home },
-  { id: "about", component: About},
+  { id: "home", component: Home, },
+  { id: "about", component: About },
   { id: "services", component: Services, minHeightMobile: 1500, minHeightDesktop: 800 },
-  { id: "skills", component: Skills },
+  { id: "skills", component: Skills, },
   { id: "timeline", component: Timeline, minHeightMobile: 1500, minHeightDesktop: 600 },
-  { id: "projects", component: Projects },
-  { id: "contact", component: Contact },
+  { id: "projects", component: Projects, title: "Projetos", background: "PROJETOS" },
+  { id: "contact", component: Contact, title: "Contato", background: "CONTATO" },
 ];
 
-const SectionWrapper = ({ id, Component, minHeightMobile, minHeightDesktop, minHeight }) => {
+const SectionWrapper = ({
+  id,
+  Component,
+  title,
+  background,
+  minHeightMobile,
+  minHeightDesktop,
+  minHeight,
+}) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { threshold: 0.2, triggerOnce: true });
 
@@ -43,9 +53,13 @@ const SectionWrapper = ({ id, Component, minHeightMobile, minHeightDesktop, minH
         visibility: isInView ? "visible" : "hidden",
         opacity: isInView ? 1 : 0,
         transition: "opacity 0.3s ease",
+        position: "relative",
       }}
     >
-      <Suspense fallback={<div style={{ height: getMinHeight() }} />}>
+      {/* FancyTitle sempre fora do componente principal */}
+      <FancyTitle title={title} background={background} />
+
+      <Suspense fallback={<div style={{ height: getMinHeight() }} />} >
         <motion.div
           initial={{ x: 160, opacity: 0 }}
           animate={isInView ? { x: 0, opacity: 1 } : {}}
@@ -63,11 +77,13 @@ const Page = () => {
     <div className="container-global">
       <ParticlesBackground />
       <CustomCursor />
-      {sectionsList.map(({ id, component, minHeightMobile, minHeightDesktop, minHeight }) => (
+      {sectionsList.map(({ id, component, title, background, minHeightMobile, minHeightDesktop, minHeight }) => (
         <SectionWrapper
           key={id}
           id={id}
           Component={component}
+          title={title}
+          background={background}
           minHeightMobile={minHeightMobile}
           minHeightDesktop={minHeightDesktop}
           minHeight={minHeight}

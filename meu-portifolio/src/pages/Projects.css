@@ -1,8 +1,9 @@
+
 .projects-section {
   height: 400vh;
   background-color: transparent;
   position: relative;
-  margin-top: 400px ;
+  margin-top: 270px ;
   margin-bottom: 400px;
 }
 
@@ -19,8 +20,6 @@
   opacity: 0;
   visibility: hidden;
 }
-
-
 
 .sticky-container.fixed {
   position: fixed;
@@ -39,16 +38,21 @@
   gap: 2rem;
   padding: 0 4rem;
   will-change: transform;
+  padding-left: 200px;
+  padding-right: 200px;
+
+  gap: 100px;
 }
 
 .cardd {
   flex: 0 0 auto;
-  width: 450px;
+  width: 350px;
   height: 450px;
   position: relative;
   background-color: #ccc;
   overflow: hidden;
   border-radius: 16px;
+  color: black;
 }
 
 .card-image {
@@ -75,17 +79,18 @@
 }
 
 .card-text {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
   text-transform: uppercase;
-  color: white;
+  color: #242424;
+  font-family: 'Bebas Neue', sans-serif;
   text-align: center;
   padding: 1rem;
 }
 
 
 .project-modal {
-  position: fixed;
+  position: fixed !important;
   top: 50%;
   left: 50%;
   width: 90%;
@@ -93,7 +98,7 @@
   padding: 2rem;
   background: #1e1e1e;
   border-radius: 1rem;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) !important;
   z-index: 999;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
   color: white;
@@ -122,17 +127,118 @@
   text-align: center;
 }
 
-.bottom-close-button {
-  padding: 0.7rem 1.2rem;
-  font-size: 1rem;
-  background: #1976d2;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease;
+
+
+/* /* animação de opacity  */
+
+.projects-hover-container-projects {
+  position: relative;
+  display: contents;
 }
 
-.bottom-close-button:hover {
-  background: #115293;
+.projects-hover-container-projects:hover .cardd {
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
 }
+
+.projects-hover-container-projects:hover .cardd:hover {
+  opacity: 1 !important;
+  z-index: 2;
+}
+
+.site-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* escurece o fundo */
+  z-index: 998;
+  pointer-events: none; /* permite clique apenas no modal */
+}
+
+/* Quando um card está selecionado, escurece os demais */
+.projects-hover-container-projects .cardd {
+  transition: opacity 0.3s ease;
+}
+
+.projects-hover-container-projects .cardd.selected {
+  opacity: 1 !important;
+  z-index: 2;
+}
+
+.projects-hover-container-projects:has(.cardd.selected) .cardd:not(.selected) {
+  opacity: 0.3;
+}
+
+
+
+
+
+
+.modal-links{
+  gap: 40px;
+  display: flex;
+}
+
+.fancy-btn {
+  --font-size: 1rem;
+  --transition: 0.3s;
+  --hovered: 0;
+  border: none;
+  border-radius: 5px;
+  font-size: var(--font-size);
+  font-family: 'inter', sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  padding: 0;
+  color: black;
+  overflow: hidden;
+  background: white;
+  transition: border-color var(--transition);
+}
+
+.fancy-btn:hover {
+  --hovered: 1;
+  border-color: rgba(0, 0, 0, 0.8);
+}
+
+.fancy-btn .btn-content {
+  display: grid;
+  grid-template-columns:
+    calc((var(--font-size) * 1.75) * (1 - var(--hovered)))
+    1fr
+    calc((var(--font-size) * 1.75) * var(--hovered));
+  align-items: center;
+  padding: calc(var(--font-size) * 0.75) calc(var(--font-size) * 1.2);
+  transition: grid-template-columns var(--transition);
+}
+
+.fancy-btn svg {
+  width: calc(var(--font-size) * 1);
+  height: calc(var(--font-size) * 1);
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+.fancy-btn .left-icon svg {
+  width: 40px;
+  scale: 1.3;
+  margin-left: -25px;
+  margin-top: 5px;
+  transform: translateX(calc(((var(--hovered)) * -150%) + 10%));
+}
+
+.fancy-btn .right-icon svg {
+  transform: translateX(calc((1 - var(--hovered)) * 150%));
+  opacity: var(--hovered);
+}
+
+.fancy-btn a {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
