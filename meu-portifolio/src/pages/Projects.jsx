@@ -8,6 +8,13 @@ import {
   AnimatePresence,
 } from "framer-motion";
 import "./Projects.css";
+import projectAurora from '../assets/project_aurora.png'
+import projectBurguer from '../assets/project_burguer.png'
+import projectLarPerfeito from '../assets/project_lar_perfeito.png'
+import projectChess from '../assets/project_chess.jpeg'
+import projectPopCorn from '../assets/project_popcornplay.png'
+import projectPrevisao from '../assets/project_previsao_tempo.png'
+import projectCadastro from '../assets/projects_cadasto.jpeg'
 
 const techColors = {
   "React": "#31C9E4",
@@ -16,12 +23,12 @@ const techColors = {
   "Firebase": "#ffca28",
   "Framer Motion": "#e90",
   "Next.js": "#FFFFFF",
-  "AOS": "#35495e",
+  "API REST": "#35495e",
   "MDX": "#f9ac00",
   "Supabase": "#3ecf8e",
   "Redux": "#764abc",
   "Stripe": "#635bff",
-  "YouTube API": "#ff0000",
+  "Design": "#ff6384",
   "CSS Modules": "#2965f1",
   "GSAP": "#88ce02",
   "HTML": "#e34c26",
@@ -248,67 +255,68 @@ const Projects = () => {
 const cards = [
   {
     id: 1,
-    url: "/imgs/abstract/1.jpg",
-    title: "Projeto 1",
-    description: "Dashboard administrativo com painéis interativos e responsivos.",
-    techs: ["React", "JavaScript", "HTML", "CSS", "Banco de Dados"],
+    url: projectLarPerfeito,
+    title: "Lar Perfeito",
+    description: "Site desenvolvido em WordPress para um cliente, a mesma aplicação que se chama Lar Perfeito, com o objetivo de apresentar as residências e terrenos à venda do cliente, servindo como forma de contato e catálogo.",
+    techs: ["WordPress", "Banco de Dados", "PHP", "JavaScript", "Design"],
     github: "https://github.com/seuusuario/projeto1",
     deploy: "https://projeto1.vercel.app",
   },
   {
     id: 2,
-    url: "/imgs/abstract/2.jpg",
-    title: "Projeto 2",
-    description: "App de tarefas com autenticação e armazenamento em nuvem.",
-    techs: ["React", "Firebase", "Framer Motion"],
+    url: projectBurguer,
+    title: "Burguer & Brasa",
+    description: "Uma experiência saborosa em forma de site, o Burguer & Brasa foi pensado para despertar o apetite com um visual marcante, animações envolventes e uma navegação que convida o cliente a fazer o pedido perfeito.",
+    techs: ["HTML", "Tailwind", "JavaScript", "Design"],
     github: "https://github.com/seuusuario/projeto2",
     deploy: "https://projeto2.vercel.app",
   },
   {
     id: 3,
-    url: "/imgs/abstract/3.jpg",
-    title: "Projeto 3",
-    description: "Landing page moderna e animada para startups.",
-    techs: ["Next.js", "Tailwind", "AOS"],
+    url: projectPrevisao,
+    title: "Previsão",
+    description: "Este projeto é um site responsivo desenvolvido para oferecer uma experiência simples e intuitiva na consulta de previsões do tempo. Podendo logo pesquisar por qualquer cidade e obter rapidamente as condições climáticas atuais e dos próximos dias.",
+    techs: ["React", "JavaScript", "CSS Modules", "API REST"],
     github: "https://github.com/seuusuario/projeto3",
     deploy: "https://projeto3.vercel.app",
   },
   {
     id: 4,
-    url: "/imgs/abstract/4.jpg",
-    title: "Projeto 4",
-    description: "Sistema de blog com markdown e painel administrativo.",
-    techs: ["Next.js", "MDX", "Supabase"],
+    url: projectChess,
+    title: "Chess Game",
+    description: "Um desafio estratégico dentro e fora do tabuleiro. Esse projeto de xadrez foi desenvolvido do zero, com foco total na lógica do jogo, regras oficiais e uma interface pensada para oferecer uma experiência imersiva e inteligente ao jogador.",
+    techs: ["React", "JavaScript", "CSS"],
     github: "https://github.com/seuusuario/projeto4",
     deploy: "https://projeto4.vercel.app",
   },
   {
     id: 5,
-    url: "/imgs/abstract/5.jpg",
-    title: "Projeto 5",
-    description: "Loja virtual com carrinho e integração com Stripe.",
-    techs: ["React", "Redux", "Stripe"],
+    url: projectAurora,
+    title: "Aurora",
+    description: "Aurora é uma loja virtual de roupas desenvolvida como meu primeiro projeto em WordPress. Nascido após a conclusão dos cursos de Wordpress, esse projeto marca o início da minha jornada com CMS, unindo praticidade, design e funcionalidade em uma vitrine online moderna.",
+    techs: ["WordPress", "Banco de Dados", "PHP", "JavaScript", "Design"],
     github: "https://github.com/seuusuario/projeto5",
     deploy: "https://projeto5.vercel.app",
   },
   {
     id: 6,
-    url: "/imgs/abstract/6.jpg",
-    title: "Projeto 6",
-    description: "Clonagem do YouTube com pesquisa de vídeos via API.",
-    techs: ["React", "YouTube API", "CSS Modules"],
-    github: "https://github.com/seuusuario/projeto6",
-    deploy: "https://projeto6.vercel.app",
-  },
-  {
-    id: 7,
-    url: "/imgs/abstract/7.jpg",
-    title: "Projeto 7",
-    description: "Portfolio animado com seções interativas e scroll horizontal.",
-    techs: ["React", "Framer Motion", "GSAP"],
+    url: projectPopCorn,
+    title: "Pop Corn Play",
+    description: "PopcornPlay é uma plataforma interativa voltada para amantes de filmes e séries. Com uma interface moderna e intuitiva, permite explorar títulos, descobrir sinopses, trailers e avaliações, tudo em um só lugar. Uma verdadeira experiência cinematográfica direto do navegador.",
+    techs: ["React", "JavaScript", "API REST", "CSS Modules"],
     github: "https://github.com/seuusuario/projeto7",
     deploy: "https://projeto7.vercel.app",
   },
+  {
+    id: 7,
+    url: projectCadastro,
+    title: "Cadastro ",
+    description: "Sistema completo de registro de usuários, com funcionalidades que vão desde o cadastro até a exibição dinâmica de dados. Um projeto que consolidou meus conhecimentos e me proporcionou uma experiência prática valiosa no desenvolvimento de aplicações modernas.",
+    techs: ["React", "API REST", "Banco de Dados", "CSS"],
+    github: "https://github.com/seuusuario/projeto8",
+    deploy: "https://projeto8.vercel.app",
+  },
 ];
+
 
 export default Projects;
