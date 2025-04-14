@@ -54,6 +54,7 @@
   overflow: hidden;
   border-radius: 16px;
   color: black;
+  box-shadow: 0px 0px 30px #1d1d1d;
 }
 
 .card-image {
@@ -78,7 +79,7 @@
   display: grid;
   place-content: end;
   z-index: 10;
-  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-color:#27272718 ;
 }
 
 .card-text {
@@ -94,8 +95,11 @@
   text-align: center;
   padding: 1rem;
   margin-bottom: 0;
+  transition: 0.3s ease-in-out;
 }
-
+.card-text:hover{
+  color: white;
+}
 
 .project-modal {
   position: fixed !important;

@@ -15,6 +15,7 @@ import projectChess from '../assets/project_chess.jpeg'
 import projectPopCorn from '../assets/project_popcornplay.png'
 import projectPrevisao from '../assets/project_previsao_tempo.png'
 import projectCadastro from '../assets/projects_cadasto.jpeg'
+import CommingSoon from '../assets/comingSoon.jpg'
 
 const techColors = {
   "React": "#31C9E4",
@@ -311,6 +312,15 @@ const cards = [
     id: 7,
     url: projectCadastro,
     title: "Cadastro ",
+    description: "Sistema completo de registro de usuários, com funcionalidades que vão desde o cadastro até a exibição dinâmica de dados. Um projeto que consolidou meus conhecimentos e me proporcionou uma experiência prática valiosa no desenvolvimento de aplicações modernas.",
+    techs: ["React", "API REST", "Banco de Dados", "CSS"],
+    github: "https://github.com/seuusuario/projeto8",
+    deploy: "https://projeto8.vercel.app",
+  },
+  {
+    id: 7,
+    url: CommingSoon,
+    title: "Cadastro",
     description: "Sistema completo de registro de usuários, com funcionalidades que vão desde o cadastro até a exibição dinâmica de dados. Um projeto que consolidou meus conhecimentos e me proporcionou uma experiência prática valiosa no desenvolvimento de aplicações modernas.",
     techs: ["React", "API REST", "Banco de Dados", "CSS"],
     github: "https://github.com/seuusuario/projeto8",
