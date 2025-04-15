@@ -318,7 +318,7 @@ const cards = [
     deploy: "https://projeto8.vercel.app",
   },
   {
-    id: 7,
+    id: 8,
     url: CommingSoon,
     title: "Cadastro",
     description: "Sistema completo de registro de usuários, com funcionalidades que vão desde o cadastro até a exibição dinâmica de dados. Um projeto que consolidou meus conhecimentos e me proporcionou uma experiência prática valiosa no desenvolvimento de aplicações modernas.",
