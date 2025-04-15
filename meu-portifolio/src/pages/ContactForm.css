@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
 .section {
-  background-color: rgba(255, 0, 0, 0.322);
   position: relative;
+  margin-top: 30px;
   width: 100%;
   z-index: 1;
   display: flex !important;
@@ -43,7 +45,7 @@
   line-height: 44px;
   padding: 0 25px 0 25px;
   overflow: hidden;
-  color: #fff;
+  color: white;
   text-align: left;
 }
 
@@ -93,13 +95,13 @@
 
 .card-3d-wrap {
   position: relative;
-  width: 340px;
+  width: 440px;
   max-width: calc(100% - 20px);
   height: 510px;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   perspective: 1000px;
-  margin-top: 90px;
+  margin-top: 50px;
 }
 
 .card-3d-wrapper {
@@ -116,9 +118,11 @@
 .card-back {
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 1);
+  display: flex !important;
+  justify-content: center;
+  background-color: #D6CFE1;
   position: absolute;
-  border-radius: 6px;
+  border-radius: 15px;
   left: 0;
   top: 0;
   -webkit-transform-style: preserve-3d;
@@ -134,7 +138,7 @@
 
 .pricing-wrap {
   position: relative;
-  padding-top: 160px;
+  padding-top: 0px;
   width: 100%;
   display: block;
   z-index: 1;
@@ -149,13 +153,12 @@
   width: 100%;
   display: block;
   text-align: center;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
   font-weight: 700;
   letter-spacing: 3px;
-  font-size: 28px;
+  font-size: 40px;
   line-height: 1.7;
-  color: #102770;
-  transform: translate3d(0, 0, 35px) perspective(100px);
+  color: #000000;
 }
 
 .pricing-wrap h4:before {
@@ -163,8 +166,8 @@
   content: '';
   z-index: -1;
   background: linear-gradient(217deg, #448ad5, #b8eaf9);
-  width: 70px;
-  height: 70px;
+  width: 75px;
+  height: 75px;
   display: block;
   top: 50%;
   left: 50%;
@@ -174,7 +177,7 @@
 }
 
 .card-back .pricing-wrap h4:before {
-  background: linear-gradient(217deg, #648946, #a3c984);
+  background: linear-gradient(217deg, #834ef3, #d896ff);
 }
 
 @keyframes border-transform {
@@ -186,3 +189,180 @@
   70% { border-radius: 50% 50% 34% 66% / 56% 68% 32% 44%; }
   84% { border-radius: 46% 54% 50% 50% / 35% 61% 39% 65%; }
 }
+
+
+form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    margin-top: -10px;
+    height: auto;
+}
+/* Floating Label Input Style */
+.input {
+    position: relative;
+    margin-bottom: 1.5rem;
+    color: black;
+  }
+  
+  .input__field {
+    box-sizing: border-box;
+    display: block;
+    width: 350px;
+    border: 2px solid currentColor;
+    padding: 1.5rem 0.5rem 0.5rem; /* espaço extra no topo p/ label */
+    color: currentColor;
+    background: transparent;
+    border-radius: 15px;
+    font-size: 1rem;
+    transition: border-color 120ms ease-in;
+  }
+  
+  .input__label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 1rem;
+    margin: 0.75rem 0.5rem;
+    background-color: #D6CFE1;
+    white-space: nowrap;
+    transform: translate(0, 0);
+    transform-origin: 0 0;
+    font-weight: bold;
+    line-height: 1.2;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: transform 120ms ease-in, color 120ms ease-in;
+  }
+  
+  .input__field:focus,
+  .input__field:not(:placeholder-shown) {
+    border-color:black;
+    outline: none;
+  }
+  
+  .input__field:focus + .input__label,
+  .input__field:not(:placeholder-shown) + .input__label {
+    transform: translate(0.25rem, -95%) scale(0.8);
+    color: black;
+  }
+  
+  .button-group {
+    margin-top: calc(var(--size-bezel) * 2.5);
+  }
+  
+  a.button {
+    position: relative;
+    display: inline-block;
+    padding: 10px 40px;
+    color: black;
+    background-color: #5c9de2;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 5px;
+    font-size: 25px;
+    box-shadow: 0 5px 50px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    transition: all 0.4s ease;
+    border-radius: 4px; /* Adicionando borda arredondada ao botão */
+  }
+  
+  a.button::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px; /* Adicionando 'right' para ter uma borda bem definida */
+    bottom: 2px;
+    background-color: #b8eaf900;
+  }
+  
+  a.button span {
+    position: absolute;
+    background: linear-gradient(to right, #448ad5, #b8eaf9);
+    animation: animate1 2s linear infinite;
+  }
+  
+  a.button span:nth-child(1) {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    animation: animate1 2s linear infinite;
+    animation-delay: 1s;
+  }
+  
+  a.button span:nth-child(2) {
+    top: 0;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    animation: animate2 2s linear infinite;
+    animation-delay: 2s;
+  }
+  
+  a.button span:nth-child(3) {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    animation: animate3 2s linear infinite;
+    animation-delay: 1s;
+  }
+  
+  a.button span:nth-child(4) {
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    animation: animate4 2s linear infinite;
+    animation-delay: 2s;
+  }
+  
+  @keyframes animate1 {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  @keyframes animate2 {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(100%);
+    }
+  }
+  
+  @keyframes animate3 {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+  @keyframes animate4 {
+    0% {
+      transform: translateY(100%);
+    }
+    100% {
+      transform: translateY(-100%);
+    }
+  }
+  
+
+  .button_notes{
+    margin-top: 75px;
+    background-color: #A56BF8 !important;
+  }
+
+  .button_notes span{
+    background: linear-gradient(to right, #8051e6, #da9dfd) !important;
+  }

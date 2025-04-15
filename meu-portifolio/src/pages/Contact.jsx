@@ -41,68 +41,62 @@ const Contact = () => {
                     <div className="pricing-wrap">
                       <h4 className="mb-5">Contact Us</h4>
                       <form action="#">
-                        <div className="form-group">
-                          <label htmlFor="name">Name</label>
-                          <input
-                            type="text"
-                            id="name"
-                            className="form-control"
-                            placeholder="Your Name"
-                          />
+                        <div className="input">
+                          <input type="text" id="name" className="input__field" placeholder=" " />
+                          <label htmlFor="name" className="input__label">Name</label>
                         </div>
-                        <div className="form-group">
-                          <label htmlFor="email">Email</label>
-                          <input
-                            type="email"
-                            id="email"
-                            className="form-control"
-                            placeholder="Your Email"
-                          />
+                        <div className="input">
+                          <input type="email" id="email" className="input__field" placeholder=" " />
+                          <label htmlFor="email" className="input__label">Email</label>
                         </div>
-                        <div className="form-group">
-                          <label htmlFor="message">Message</label>
-                          <textarea
-                            id="message"
-                            className="form-control"
-                            placeholder="Your Message"
-                          ></textarea>
+                        <div className="input">
+                          <textarea id="message" className="input__field" placeholder=" "></textarea>
+                          <label htmlFor="message" className="input__label">Message</label>
                         </div>
-                        <button type="submit" className="btn btn-primary">
+                        {/* Aqui está o botão com a classe button_contact */}
+                        <a href="#" className="button button_contact">
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
                           Submit
-                        </button>
+                        </a>
                       </form>
                     </div>
                   </div>
-
+  
                   {/* Formulário de Avaliação - Verso */}
                   <div className="card-back">
                     <div className="pricing-wrap">
                       <h4 className="mb-5">Leave Feedback</h4>
                       <form action="#">
-                        <div className="form-group">
-                          <label htmlFor="rating">Rating</label>
-                          <select id="rating" className="form-control">
+                        <div className="input">
+                          <select id="rating" className="input__field">
+                            <option value="" disabled selected hidden></option>
                             <option value="5">5 - Excellent</option>
                             <option value="4">4 - Good</option>
                             <option value="3">3 - Average</option>
                             <option value="2">2 - Poor</option>
                             <option value="1">1 - Terrible</option>
                           </select>
+                          <label htmlFor="rating" className="input__label">Rating</label>
                         </div>
-                        <div className="form-group">
-                          <label htmlFor="comments">Comments</label>
-                          <textarea
-                            id="comments"
-                            className="form-control"
-                            placeholder="Your Feedback"
-                          ></textarea>
+                        <div className="input">
+                          <textarea id="comments" className="input__field" placeholder=" "></textarea>
+                          <label htmlFor="comments" className="input__label">Comments</label>
                         </div>
-                        <button type="submit" className="btn btn-primary">
-                          Submit Feedback
-                        </button>
+                        {/* Botão de feedback com a classe button_notes */}
+                        <a href="#" className="button button_notes">
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          Submit
+                        </a>
                       </form>
                     </div>
                   </div>
+  
                 </div>
               </div>
             </div>
@@ -111,6 +105,7 @@ const Contact = () => {
       </div>
     </div>
   );
+  
 };
 
 export default Contact;
