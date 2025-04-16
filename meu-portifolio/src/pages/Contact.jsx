@@ -1,12 +1,99 @@
 import React, { useState } from 'react';
-import './ContactForm.css'; // Certifique-se de importar o CSS corretamente
+import './ContactForm.css';
 
 const Contact = () => {
   const [checked, setChecked] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
 
-  const handleChange = () => {
-    setChecked(!checked);
+  const [rating, setRating] = useState('');
+
+  const handleChange = () => setChecked(!checked);
+
+  const handleInputChange = (e) => {
+    const { id, value } = e.target;
+    setFormData({ ...formData, [id]: value });
   };
+
+  const handleRatingChange = (e) => {
+    setRating(e.target.id.replace('rating-', '')); // rating-5 => '5'
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const data = {
+      service_id: 'service_i0q4wr6',
+      template_id: 'template_c3uw6ie',
+      user_id: 'vyHXAlCqEJTMTF4lG',
+      template_params: {
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+      },
+    };
+
+    fetch('https://api.emailjs.com/api/v1.0/email/send', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    })
+      .then((res) => {
+        if (res.ok) {
+          alert('Mensagem enviada com sucesso!');
+          setFormData({ name: '', email: '', message: '' });
+        } else {
+          alert('Erro ao enviar a mensagem.');
+        }
+      })
+      .catch((err) => {
+        console.error('Erro:', err);
+        alert('Erro ao enviar. Verifique a conexão.');
+      });
+  };
+
+  const handleFeedbackSubmit = (e) => {
+    e.preventDefault();
+
+    if (!rating) {
+      alert('Por favor, selecione uma nota antes de enviar!');
+      return;
+    }
+
+    const data = {
+      service_id: 'service_i0q4wr6',
+      template_id: 'template_c3uw6ie',
+      user_id: 'vyHXAlCqEJTMTF4lG',
+      template_params: {
+        name: 'Feedback Rating',
+        email: 'rating@form.com',
+        message: `Usuário avaliou com nota: ${rating}`,
+      },
+    };
+
+    fetch('https://api.emailjs.com/api/v1.0/email/send', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    })
+      .then((res) => {
+        if (res.ok) {
+          alert('Feedback enviado com sucesso!');
+          setRating('');
+          setChecked(false); // Volta pro front
+        } else {
+          alert('Erro ao enviar o feedback.');
+        }
+      })
+      .catch((err) => {
+        console.error('Erro:', err);
+        alert('Erro ao enviar o feedback. Verifique a conexão.');
+      });
+  };
+
   return (
     <div className="section over-hide">
       <div className="container">
@@ -35,24 +122,43 @@ const Contact = () => {
                     transition: 'transform 700ms 400ms ease-out',
                   }}
                 >
-                  {/* Formulário de Contato - Frente */}
                   <div className="card-front">
                     <div className="pricing-wrap">
                       <h4 className="mb-5">Contact Us</h4>
-                      <form action="#">
+                      <form>
                         <div className="input">
-                          <input type="text" id="name" className="input__field" placeholder=" " />
+                          <input
+                            type="text"
+                            id="name"
+                            className="input__field"
+                            placeholder=" "
+                            value={formData.name}
+                            onChange={handleInputChange}
+                          />
                           <label htmlFor="name" className="input__label">Name</label>
                         </div>
                         <div className="input">
-                          <input type="email" id="email" className="input__field" placeholder=" " />
+                          <input
+                            type="email"
+                            id="email"
+                            className="input__field"
+                            placeholder=" "
+                            value={formData.email}
+                            onChange={handleInputChange}
+                          />
                           <label htmlFor="email" className="input__label">Email</label>
                         </div>
                         <div className="input">
-                          <textarea id="message" className="input__field" placeholder=" "></textarea>
+                          <textarea
+                            id="message"
+                            className="input__field"
+                            placeholder=" "
+                            value={formData.message}
+                            onChange={handleInputChange}
+                          />
                           <label htmlFor="message" className="input__label">Message</label>
                         </div>
-                        <a href="#" className="button button_contact obj">
+                        <a href="#" onClick={handleSubmit} className="button button_contact obj">
                           <span></span>
                           <span></span>
                           <span></span>
@@ -67,22 +173,24 @@ const Contact = () => {
                   <div className="card-back">
                     <div className="pricing-wrap">
                       <h4 className="mb-5">Leave Feedback</h4>
-                      <form action="#">
-                        <div className="input  notas">
-                          <div className="rating">
-                            <input type="radio" name="rating" id="rating-5" />
-                            <label htmlFor="rating-5"></label>
-                            <input type="radio" name="rating" id="rating-4" />
-                            <label htmlFor="rating-4"></label>
-                            <input type="radio" name="rating" id="rating-3" />
-                            <label htmlFor="rating-3"></label>
-                            <input type="radio" name="rating" id="rating-2" />
-                            <label htmlFor="rating-2"></label>
-                            <input type="radio" name="rating" id="rating-1" />
-                            <label htmlFor="rating-1"></label>
+                      <form onSubmit={handleFeedbackSubmit}>
+                        <div className="input notas">
+                          <div className="rating" onChange={handleRatingChange}>
+                            {[5, 4, 3, 2, 1].map((value) => (
+                              <React.Fragment key={value}>
+                                <input
+                                  type="radio"
+                                  name="rating"
+                                  id={`rating-${value}`}
+                                  checked={rating === `${value}`}
+                                  onChange={handleRatingChange}
+                                />
+                                <label htmlFor={`rating-${value}`}></label>
+                              </React.Fragment>
+                            ))}
                             <div className="emoji-wrapper">
                               <div className="emoji">
-                                                  <svg class="rating-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                                  <svg className="rating-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                               <circle cx="256" cy="256" r="256" fill="#ffd93b"/>
                               <path d="M512 256c0 141.44-114.64 256-256 256-80.48 0-152.32-37.12-199.28-95.28 43.92 35.52 99.84 56.72 160.72 56.72 141.36 0 256-114.56 256-256 0-60.88-21.2-116.8-56.72-160.72C474.8 103.68 512 175.52 512 256z" fill="#f4c534"/>
                               <ellipse transform="scale(-1) rotate(31.21 715.433 -595.455)" cx="166.318" cy="199.829" rx="56.146" ry="56.13" fill="#fff"/>
@@ -93,7 +201,7 @@ const Contact = () => {
                               <ellipse transform="scale(-1) rotate(66.227 254.508 -573.138)" cx="373.794" cy="165.987" rx="8.016" ry="5.296" fill="#5a5f63"/>
                               <path d="M370.56 344.4c0 7.696-6.224 13.92-13.92 13.92H155.36c-7.616 0-13.92-6.224-13.92-13.92s6.304-13.92 13.92-13.92h201.296c7.696.016 13.904 6.224 13.904 13.92z" fill="#3e4347"/>
                             </svg>
-                              <svg class="rating-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                              <svg className="rating-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                               <circle cx="256" cy="256" r="256" fill="#ffd93b"/>
                               <path d="M512 256A256 256 0 0 1 56.7 416.7a256 256 0 0 0 360-360c58.1 47 95.3 118.8 95.3 199.3z" fill="#f4c534"/>
                               <path d="M328.4 428a92.8 92.8 0 0 0-145-.1 6.8 6.8 0 0 1-12-5.8 86.6 86.6 0 0 1 84.5-69 86.6 86.6 0 0 1 84.7 69.8c1.3 6.9-7.7 10.6-12.2 5.1z" fill="#3e4347"/>
@@ -106,7 +214,7 @@ const Contact = () => {
                               <path d="M115.8 246.1a38.5 38.5 0 0 0 38.7 38.6 38.5 38.5 0 0 0 38.6-38.6 38.6 38.6 0 1 0-77.3 0z" fill="#3e4347"/>
                               <path d="M131.6 241.1c3.2 3.2 9.9 1.7 14.9-3.2 4.8-4.8 6.2-11.5 3-14.7-3.3-3.4-10-2-14.9 2.9-4.9 5-6.4 11.7-3 15z" fill="#fff"/>
                             </svg>
-                              <svg class="rating-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                              <svg className="rating-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                               <circle cx="256" cy="256" r="256" fill="#ffd93b"/>
                               <path d="M512 256A256 256 0 0 1 56.7 416.7a256 256 0 0 0 360-360c58.1 47 95.3 118.8 95.3 199.3z" fill="#f4c534"/>
                               <path d="M336.6 403.2c-6.5 8-16 10-25.5 5.2a117.6 117.6 0 0 0-110.2 0c-9.4 4.9-19 3.3-25.6-4.6-6.5-7.7-4.7-21.1 8.4-28 45.1-24 99.5-24 144.6 0 13 7 14.8 19.7 8.3 27.4z" fill="#3e4347"/>
@@ -119,7 +227,7 @@ const Contact = () => {
                               <circle cx="168.5" cy="260.4" r="36.2" fill="#3e4347"/>
                               <ellipse transform="rotate(-135 182.1 246.7)" cx="182.1" cy="246.7" rx="10" ry="6.5" fill="#fff"/>
                             </svg>
-                              <svg class="rating-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                              <svg className="rating-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                         <circle cx="256" cy="256" r="256" fill="#ffd93b"/>
                         <path d="M407.7 352.8a163.9 163.9 0 0 1-303.5 0c-2.3-5.5 1.5-12 7.5-13.2a780.8 780.8 0 0 1 288.4 0c6 1.2 9.9 7.7 7.6 13.2z" fill="#3e4347"/>
                         <path d="M512 256A256 256 0 0 1 56.7 416.7a256 256 0 0 0 360-360c58.1 47 95.3 118.8 95.3 199.3z" fill="#f4c534"/>
@@ -135,7 +243,7 @@ const Contact = () => {
                         <ellipse cx="155.6" cy="205.3" rx="44.2" ry="44.2" fill="#3e4347"/>
                         <ellipse transform="scale(-1) rotate(45 454 -421.3)" cx="174.5" cy="188" rx="12" ry="8.1" fill="#fff"/>
                       </svg>
-                              <svg class="rating-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                              <svg className="rating-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                               <circle cx="256" cy="256" r="256" fill="#ffd93b"/>
                               <path d="M512 256A256 256 0 0 1 56.7 416.7a256 256 0 0 0 360-360c58.1 47 95.3 118.8 95.3 199.3z" fill="#f4c534"/>
                               <path d="M232.3 201.3c0 49.2-74.3 94.2-74.3 94.2s-74.4-45-74.4-94.2a38 38 0 0 1 74.4-11.1 38 38 0 0 1 74.3 11.1z" fill="#e24b4b"/>
@@ -147,7 +255,7 @@ const Contact = () => {
                               <path d="M381.7 374.1c-30.2 35.9-75.3 64.4-125.7 64.4s-95.4-28.5-125.8-64.2a17.6 17.6 0 0 1 16.5-28.7 627.7 627.7 0 0 0 218.7-.1c16.2-2.7 27 16.1 16.3 28.6z" fill="#3e4347"/>
                               <path d="M256 438.5c25.7 0 50-7.5 71.7-19.5-9-33.7-40.7-43.3-62.6-31.7-29.7 15.8-62.8-4.7-75.6 34.3 20.3 10.4 42.8 17 66.5 17z" fill="#e24b4b"/>
                             </svg>
-                              <svg class="rating-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                              <svg className="rating-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                               <g fill="#ffd93b">
                                 <circle cx="256" cy="256" r="256"/>
                                 <path d="M512 256A256 256 0 0 1 56.8 416.7a256 256 0 0 0 360-360c58 47 95.2 118.8 95.2 199.3z"/>
@@ -171,16 +279,23 @@ const Contact = () => {
                         
                         </div>
                         <div className="input">
-                          <textarea id="comments" className="input__field" placeholder=" "></textarea>
+                          <textarea
+                            id="comments"
+                            className="input__field"
+                            placeholder=" "
+                            required
+                          ></textarea>
                           <label htmlFor="comments" className="input__label">Comments</label>
                         </div>
-                        <a href="#" className="button button_notes obj">
+
+                        <a href="#" onClick={handleFeedbackSubmit} className="button button_contact obj button_notes">
                           <span></span>
                           <span></span>
                           <span></span>
                           <span></span>
                           Submit
                         </a>
+
                       </form>
                     </div>
                   </div>
