@@ -3,6 +3,7 @@ import { motion, useInView } from "framer-motion";
 import ParticlesBackground from "./ParticlesBackground";
 import CustomCursor from "./CustomCursor";
 import FancyTitle from "../components/FancyTitle"; // IMPORTANTE
+import QuestionIcon from "./QuestionIcon";
 
 import "./Page.css";
 
@@ -77,6 +78,7 @@ const Page = () => {
     <div className="container-global">
       <ParticlesBackground />
       <CustomCursor />
+      <QuestionIcon/>
       {sectionsList.map(({ id, component, title, background, minHeightMobile, minHeightDesktop, minHeight }) => (
         <SectionWrapper
           key={id}

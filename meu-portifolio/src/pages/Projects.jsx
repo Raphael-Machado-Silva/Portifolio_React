@@ -320,7 +320,7 @@ const cards = [
   {
     id: 8,
     url: CommingSoon,
-    title: "Cadastro",
+    title: "Em Breve",
     description: "Sistema completo de registro de usuários, com funcionalidades que vão desde o cadastro até a exibição dinâmica de dados. Um projeto que consolidou meus conhecimentos e me proporcionou uma experiência prática valiosa no desenvolvimento de aplicações modernas.",
     techs: ["React", "API REST", "Banco de Dados", "CSS"],
     github: "https://github.com/seuusuario/projeto8",
