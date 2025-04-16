@@ -1,85 +1,106 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import './QuestionIcon.css';
-import Robot from '../assets/robot1.jpg'; // Certifique-se de ter a imagem do robô aqui
-import LoadingDots from '../assets/loading.webm'; // Certifique-se de adicionar o caminho correto do arquivo .webm
+import Robot from '../assets/robot2.png';
+import UserImage from '../assets/user (1).png'; // Imagem do usuário
+import LoadingDots from '../assets/loading.webm';
 
 const QuestionIcon = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [shouldRender, setShouldRender] = useState(false);
+  const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const chatEndRef = useRef(null);
 
-  // Dicionário com informações para cada opção
   const infoDictionary = {
-    "Sobre Raphael": "Ele é apaixonado por tecnologia e desenvolvimento. Curioso, autodidata e sempre buscando evoluir tanto profissional quanto pessoalmente.",
-    "Opção 2": "No momento, ele está em busca da minha primeira oportunidade na área. Enquanto isso, venho atuando com projetos freelancer para ganhar experiência prática.",
-    "Opção 3": "O objetivo dele é crescer junto à empresa que me der uma chance, contribuindo com dedicação e evoluindo rumo à realização do sonho de dominar cada vez mais esta área.",
+    "Sobre Raphael!": "Ele é apaixonado por tecnologia e desenvolvimento. Curioso, autodidata e sempre buscando evoluir tanto profissional quanto pessoalmente.",
+    "Experiências!": "No momento, ele está em busca da primeira oportunidade na área. Enquanto isso, vem atuando com projetos freelancer para ganhar experiência prática.",
+    "Futuro!": "O objetivo dele é crescer junto à empresa que der uma chance, contribuindo com dedicação e evoluindo rumo à realização do sonho de dominar cada vez mais esta área.",
+    "Projetos!":  "O objetivo dele é realizar projetos desafiadores que tragam valor à empresa, contribuindo com dedicação e buscando sempre evoluir profissionalmente, com foco no aprimoramento contínuo e na excelência técnica.",
   };
-  
 
   const toggleWindow = () => {
-    setIsOpen(!isOpen);
+    if (isOpen) {
+      setIsOpen(false);
+      // Aguarda a animação de saída antes de remover do DOM
+      setTimeout(() => setShouldRender(false), 300); // tempo da animação em ms
+    } else {
+      setShouldRender(true);
+      // Garante que a classe open será aplicada no próximo tick
+      setTimeout(() => setIsOpen(true), 0);
+      setMessages([]); // limpa as mensagens ao abrir
+    }
   };
 
   const handleOptionClick = (option) => {
-    setSelectedOption(option);
-    setIsLoading(true); // Ativa o loading (bolinhas) enquanto exibe a resposta
+    setIsLoading(true);
+    setMessages(prev => [...prev, { sender: 'user', text: option }]);
+
     setTimeout(() => {
-      setIsLoading(false); // Desativa o loading depois de um tempo (simulando o "processamento" da resposta)
-    }, 2000); // 2 segundos de animação (ajuste conforme necessário)
+      const response = infoDictionary[option] || "Desculpe, ainda estou aprendendo sobre isso!";
+      setMessages(prev => [
+        ...prev,
+        { sender: 'bot', text: response }
+      ]);
+      setIsLoading(false);
+    }, 2000);
   };
+
+  useEffect(() => {
+    if (chatEndRef.current) {
+      chatEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [messages]);
 
   return (
     <div>
-      {/* Ícone de ponto de interrogação */}
-      <div className="question-icon" onClick={toggleWindow}>
-        ?
-      </div>
+      <div className="question-icon obj" onClick={toggleWindow}>?</div>
 
-      {/* Janela de opções */}
-      {isOpen && (
-        <div className="popup">
+      {shouldRender && (
+        <div className={`popup ${isOpen ? 'open' : ''}`}>
           <div className="popup-content">
             <div className="robot_assist">
-                <img
-                    src={Robot} // Coloque aqui o link da imagem do robô
-                    alt="Robô"
-                    className="robot-img"
-                />
-                <div className="byte_infos">
-                    <h2 className="name_robot">Byte</h2>
-                    <p className="status_robot">online</p>
-                </div> 
+              <img src={Robot} alt="Robô" className="robot-img" />
+              <div className="byte_infos">
+                <h2 className="name_robot">Byte</h2>
+                <p className="status_robot">online</p>
+              </div>
             </div>
 
-            <p className="balao2">Olá sou Byte assistente do Raphael gostaria de algo?</p>
+            <div className="chat-history">
+              {messages.length === 0 && (
+                <p className="balao2">Olá! Sou o Byte, assistente do Raphael. Como posso te ajudar?</p>
+              )}
+
+              {messages.map((msg, index) => (
+                <div key={index} className={msg.sender === 'user' ? 'user-msg' : 'bot-msg'}>
+                  {msg.sender === 'user' && (
+                    <img src={UserImage} alt="Usuário" className="img_user" />
+                  )}
+                  {msg.sender === 'bot' && (
+                    <img src={Robot} alt="Robô" className="robot-img robot_img_response" />
+                  )}
+                  <p className={`balao3 ${msg.sender === 'user' ? 'balao4' : ''}`}>{msg.text}</p>
+                </div>
+              ))}
+
+              {isLoading && (
+                <div className="loading-dots">
+                  <video loop autoPlay muted>
+                    <source src={LoadingDots} type="video/webm" />
+                    Seu navegador não suporta o formato WebM.
+                  </video>
+                </div>
+              )}
+
+              <div ref={chatEndRef}></div>
+            </div>
+
             <div className="options">
-              <button onClick={() => handleOptionClick("Sobre Raphael")}> + de Raphael</button>
-              <button onClick={() => handleOptionClick("Opção 2")}>Experiências</button>
-              <button onClick={() => handleOptionClick("Opção 3")}>Futuro</button>
+              <button onClick={() => handleOptionClick("Sobre Raphael!")}>+ de Raphael!</button>
+              <button onClick={() => handleOptionClick("Experiências!")}>Experiências!</button>
+              <button onClick={() => handleOptionClick("Futuro!")}>Futuro!</button>
+              <button onClick={() => handleOptionClick("Projetos!")}>Projetos!</button>
             </div>
-
-            {/* Animação de bolinhas piscando (usando o arquivo .webm) */}
-            {isLoading && (
-              <div className="loading-dots">
-                <video loop autoPlay muted>
-                  <source src={LoadingDots} type="video/webm" />
-                  Seu navegador não suporta o formato WebM.
-                </video>
-              </div>
-            )}
-
-            {/* Texto dependendo da opção selecionada */}
-            {selectedOption && !isLoading && (
-              <div className="option-text">
-                    <img
-                    src={Robot} // Coloque aqui o link da imagem do robô
-                    alt="Robô"
-                    className="robot-img robot_img_response"
-                />
-            
-                <p className="balao3">{infoDictionary[selectedOption]}</p> {/* Exibe o texto correspondente da opção */}
-              </div>
-            )}
           </div>
         </div>
       )}

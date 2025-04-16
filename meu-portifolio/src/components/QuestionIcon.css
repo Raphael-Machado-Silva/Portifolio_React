@@ -7,20 +7,20 @@
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #3e8e41;
-    color: white;
+    background-color: #D6CFE1;
+    color: black;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 24px;
+    box-shadow: 0px 0px 5px rgb(255, 250, 250);
+    font-size: 30px;
     cursor: pointer;
     z-index: 1000;
   }
   
-  /* Estilo da janela de popup */
   .popup {
     position: fixed;
     bottom: 80px;
@@ -34,7 +34,21 @@
     z-index: 999;
     color: black;
     overflow: hidden;
+  
+    /* Estado inicial invisível + deslocado */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none; /* Evita cliques quando escondido */
   }
+  
+  .popup.open {
+    /* Estado visível */
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  
 
   .popup-content{
     width: 100%;
@@ -43,6 +57,26 @@
     justify-content: center;
     flex-direction: column;
   }
+
+  .chat-history {
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 0;
+  }
+  
+  /* Caso necessário, estilo do loading alinhado com mensagens */
+  .loading-dots video {
+    width: 50px;
+    height: auto;
+    margin-left: 45px; /* ajusta para alinhar com o avatar */
+  }
+  
+  
   
   /* Estilo da imagem do robô */
   .robot-img {
@@ -52,10 +86,11 @@
   }
   .options{
     display: flex;
-    align-items: end;
     justify-content: center;
-    flex-direction: column;
+    flex-wrap: wrap;
     width: 100%;
+    padding-top: 10px;
+    gap: 10px;
   }
   /* Estilo das opções */
   .options button {
@@ -64,8 +99,8 @@
     color: black;
     border: none;
     padding: 10px;
-    margin: 5px 0;
-    width: 60%;
+    margin: 0px 0 5px 0px;
+    width: 45%;
     cursor: pointer;
     border-radius: 4px;
     font-size: 20px;
@@ -88,47 +123,17 @@
   }
   
 
+.loading-dots{
+    margin-left: -40px;
+}
+
+.loading-dots video{
+    width: 80px;
+}
 
 
 
 
-
-  /* Estilo para as bolinhas piscando */
-.thinking {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .dot {
-    width: 10px;
-    height: 10px;
-    background-color: #2196F3;
-    border-radius: 50%;
-    margin: 0 5px;
-    animation: blink 1.5s infinite alternate;
-  }
-  
-  .dot:nth-child(1) {
-    animation-delay: 0s;
-  }
-  
-  .dot:nth-child(2) {
-    animation-delay: 0.3s;
-  }
-  
-  .dot:nth-child(3) {
-    animation-delay: 0.6s;
-  }
-  
-  @keyframes blink {
-    0% {
-      opacity: 0.2;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
   
   /* Estilo do texto da opção selecionada */
   .option-text {
@@ -200,7 +205,7 @@
 
 
 .robot_img_response{
-    margin-left: 17px;
+    margin-left: 26px;
     margin-bottom: -10px;
     width: 45px;
 }
@@ -212,14 +217,14 @@
     font-size: 0.95em;
     line-height: 1.3em;  
     border-radius: 15px;
-    width: 90%;
+    width: 80%;
     height: auto;
     color: black;
     padding: 20px;
     position: relative;
     margin-top: 30px;
     margin-bottom: 0px;
-    margin-left: -7px;
+    margin-left: 5px;
     text-indent: 10px;
 }
 .balao3:after{ /*Triangulo*/
@@ -234,5 +239,46 @@
     border-bottom: 20px solid #cac2d4;
     top: -20px; /*localização. Experimente alterar para 'bottom'*/
     left: 10%;
+}
+
+
+.balao4{
+    background-color: #5C9DE2;
+    text-align: left;
+    font-weight: 500;
+    align-items: end;
+    width: 90px;
+    margin-left: 100px;
+    text-indent: 0px;
+}
+
+.balao4:after{ /*Triangulo*/
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    /*Faz seta "apontar para baixo. Definir o valor como 'top' fará ela "apontar para cima" */
+    /*Aqui entra a cor da "aba" do balão */
+    border-bottom: 20px solid #5C9DE2;
+    top: -20px; /*localização. Experimente alterar para 'bottom'*/
+    left: 52%;
+}
+
+.img_user{
+    width: 40px;
+    margin-top: 15px;
+    margin-right: 26px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.user-msg {
+    display: flex;
+    flex-direction: column; /* Inverte a ordem dos itens */
+    align-items: end;
+    justify-content: end; /* Alinha à direita */
+    margin-bottom: 10px;
 }
 
