@@ -2,6 +2,15 @@ import React, { useState } from 'react';
 import './ContactForm.css';
 
 const Contact = () => {
+  const [modal, setModal] = useState({ show: false, message: '', success: true });
+
+  const showModal = (message, success = true) => {
+    setModal({ show: true, message, success });
+    setTimeout(() => {
+      setModal({ show: false, message: '', success: true });
+    }, 3000);
+  };
+
   const [checked, setChecked] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -19,7 +28,7 @@ const Contact = () => {
   };
 
   const handleRatingChange = (e) => {
-    setRating(e.target.id.replace('rating-', '')); // rating-5 => '5'
+    setRating(e.target.id.replace('rating-', ''));
   };
 
   const handleSubmit = (e) => {
@@ -43,15 +52,15 @@ const Contact = () => {
     })
       .then((res) => {
         if (res.ok) {
-          alert('Mensagem enviada com sucesso!');
+          showModal('Mensagem enviada com sucesso!');
           setFormData({ name: '', email: '', message: '' });
         } else {
-          alert('Erro ao enviar a mensagem.');
+          showModal('Erro ao enviar a mensagem.', false);
         }
       })
       .catch((err) => {
         console.error('Erro:', err);
-        alert('Erro ao enviar. Verifique a conexão.');
+        showModal('Erro ao enviar. Verifique a conexão.', false);
       });
   };
 
@@ -59,7 +68,7 @@ const Contact = () => {
     e.preventDefault();
 
     if (!rating) {
-      alert('Por favor, selecione uma nota antes de enviar!');
+      showModal('Por favor, selecione uma nota antes de enviar!', false);
       return;
     }
 
@@ -81,21 +90,55 @@ const Contact = () => {
     })
       .then((res) => {
         if (res.ok) {
-          alert('Feedback enviado com sucesso!');
+          showModal('Feedback enviado com sucesso!');
           setRating('');
-          setChecked(false); // Volta pro front
+          setChecked(false);
         } else {
-          alert('Erro ao enviar o feedback.');
+          showModal('Erro ao enviar o feedback.', false);
         }
       })
       .catch((err) => {
         console.error('Erro:', err);
-        alert('Erro ao enviar o feedback. Verifique a conexão.');
+        showModal('Erro ao enviar o feedback. Verifique a conexão.', false);
       });
   };
 
+  const Modal = ({ show, message, success }) => {
+    if (!show) return null;
+
+    return (
+      <div style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100vw',
+        height: '100vh',
+        backgroundColor: 'rgba(0,0,0,0.5)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 9999,
+      }}>
+        <div style={{
+          backgroundColor: '#fff',
+          padding: '20px 30px',
+          borderRadius: '12px',
+          boxShadow: '0 0 15px rgba(0,0,0,0.2)',
+          textAlign: 'center',
+          color: success ? 'green' : 'red',
+          fontWeight: 'bold',
+          maxWidth: '80%',
+        }}>
+          {message}
+        </div>
+      </div>
+    );
+  };
+
+
   return (
     <div className="section over-hide">
+      <Modal show={modal.show} message={modal.message} success={modal.success} />
       <div className="container">
         <div className="row full-height justify-content-center">
           <div className="col-12 text-center align-self-center py-5">
