@@ -1,0 +1,35 @@
+
+  /* Estilo do rodapé */
+  .footer {
+    background-color: #2E2E2E;
+    color: #D6CFE1;
+    text-align: center;
+    padding: 25px 10px;
+    font-size: 14px;
+    box-shadow: 2px 0px 20px #181818;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'Inter';
+    margin-top: auto; /* Faz com que o rodapé empurre para o fundo quando necessário */
+    height: 70px;
+    margin-top: -60px;
+  }
+  
+  .footer__text {
+    margin: 0;
+    font-weight: 500;
+  }
+  
+  .footer__subtext {
+    margin: 15px 0 0;
+    font-family: "Bebas Neue";
+    font-size: 18px;
+    color: #D6CFE1;
+    transition: color .3s ease-in-out;
+  }
+  
+  .footer__subtext:hover{
+    color: white;
+  }

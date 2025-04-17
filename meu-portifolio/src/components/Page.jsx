@@ -2,8 +2,9 @@ import React, { Suspense, lazy, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import ParticlesBackground from "./ParticlesBackground";
 import CustomCursor from "./CustomCursor";
-import FancyTitle from "../components/FancyTitle"; // IMPORTANTE
+import FancyTitle from "../components/FancyTitle";
 import QuestionIcon from "./QuestionIcon";
+import Footer from "../pages/Footer"; // ⬅️ Adicionando o Footer aqui
 
 import "./Page.css";
 
@@ -16,10 +17,10 @@ const Projects = lazy(() => import("../pages/Projects"));
 const Contact = lazy(() => import("../pages/Contact"));
 
 const sectionsList = [
-  { id: "home", component: Home, },
+  { id: "home", component: Home },
   { id: "about", component: About },
   { id: "services", component: Services, minHeightMobile: 1500, minHeightDesktop: 800 },
-  { id: "skills", component: Skills, },
+  { id: "skills", component: Skills },
   { id: "timeline", component: Timeline, minHeightMobile: 1500, minHeightDesktop: 600 },
   { id: "projects", component: Projects, title: "Projetos", background: "PROJETOS" },
   { id: "contact", component: Contact, title: "Contato", background: "CONTATO" },
@@ -57,9 +58,7 @@ const SectionWrapper = ({
         position: "relative",
       }}
     >
-      {/* FancyTitle sempre fora do componente principal */}
       <FancyTitle title={title} background={background} />
-
       <Suspense fallback={<div style={{ height: getMinHeight() }} />} >
         <motion.div
           initial={{ x: 160, opacity: 0 }}
@@ -78,7 +77,7 @@ const Page = () => {
     <div className="container-global">
       <ParticlesBackground />
       <CustomCursor />
-      <QuestionIcon/>
+      <QuestionIcon />
       {sectionsList.map(({ id, component, title, background, minHeightMobile, minHeightDesktop, minHeight }) => (
         <SectionWrapper
           key={id}
@@ -91,6 +90,7 @@ const Page = () => {
           minHeight={minHeight}
         />
       ))}
+      <Footer /> {/* ⬅️ Footer no final da página */}
     </div>
   );
 };
