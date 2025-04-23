@@ -65,7 +65,7 @@
   transition: transform 0.3s ease;
   z-index: 0;
   border: 1px solid #242424;
-  opacity: 0.85;
+  opacity: 0.90;
 }
 
 .cardd:hover .card-image {
@@ -164,7 +164,7 @@
 }
 
 .projects-hover-container-projects:hover .cardd {
-  opacity: 0.3;
+  opacity: 0.6;
   transition: opacity 0.3s ease;
 }
 

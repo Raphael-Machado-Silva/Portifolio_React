@@ -161,4 +161,7 @@
     .service{
       padding-top: 200px;
     }
+    .background-title-service{
+      font-size: 8rem;
+    }
   }

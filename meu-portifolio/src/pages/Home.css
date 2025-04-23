@@ -123,7 +123,9 @@ h2 span.fixed {
   }
   @media (min-width: 950px){
     .welcome{
+      margin-top: 10% !important;
       font-size: 100px !important;
+      font-size: 7.5rem !important;
     }
     .intro-title{
       font-size: 22px !important;
@@ -135,14 +137,16 @@ h2 span.fixed {
   @media (min-width: 650px){
     .titles{
       width: 70vw;
-      margin-top: -5%;
+      margin-top: -12%;
     }
     .welcome{
         font-size: 85px;
         text-align: center;
+        margin-bottom: 0;
+        margin-top: -10%;
     }
     .texts{
-      margin-top: 5%;
+      margin-top:7vh;
     }
   }
   @media (max-width: 650px){
@@ -162,7 +166,8 @@ h2 span.fixed {
     .welcome{
         font-size: 80px;
         text-align: left;
-        margin-top: -10%;
+        margin-top: -30%;
+        margin-bottom: 25%;
     }
     .div-changing{
       padding-left: 80px;
@@ -185,7 +190,7 @@ h2 span.fixed {
 
   @media (max-width: 480px){
     .titles{
-      margin-top: -20%;
+      margin-top: -30%;
     }
     .texts{
       padding-left: 60px;

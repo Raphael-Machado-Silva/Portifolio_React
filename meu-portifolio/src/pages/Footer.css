@@ -33,3 +33,15 @@
   .footer__subtext:hover{
     color: white;
   }
+
+  @media (max-width: 450px){
+    .footer{
+      padding-top: 40px;
+    }
+    .footer__text{
+      width: 250px;
+    }
+    .footer__subtext{
+      width: 260px;
+    }
+  }
