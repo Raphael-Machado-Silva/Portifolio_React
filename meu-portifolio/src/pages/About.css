@@ -86,6 +86,7 @@
     animation: animateGradient 5s infinite linear, floating 3s infinite ease-in-out; /* Duas animações */
     overflow: hidden;
     cursor: pointer;
+    margin-top: 20px;
   }
   
   /* Animação do gradiente */

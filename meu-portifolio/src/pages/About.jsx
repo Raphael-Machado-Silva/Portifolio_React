@@ -12,11 +12,12 @@ const About = () => {
           <h1 className="main-title obj">Sobre Mim</h1>
         </div>
         <p className="history">
-          Olá! Meu nome é Seu Nome, sou sua profissão ou interesse. 
-          Tenho paixão por seu foco principal e adoro compartilhar conhecimento e experiências.
+          Olá! Meu nome é Raphael Machado Silva, sou estudante de Ciência da Computação e desenvolvedor front-end em transição para full stack.
         </p>
-        <p className="p_two"> Tenho paixão por seu foco principal e adoro compartilhar conhecimento e experiências.
-        Tenho paixão por seu foco principal e adoro compartilhar conhecimento e experiências.</p>
+        <p className="p_two">
+          Sou apaixonado por tecnologia, experiência do usuário e estou em busca de uma oportunidade para crescer profissionalmente, contribuir com projetos reais e aprender cada vez mais.
+        </p>
+
       </div>
 
       {/* Seção da foto */}

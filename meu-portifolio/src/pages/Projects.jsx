@@ -260,8 +260,7 @@ const cards = [
     title: "Lar Perfeito",
     description: "Site desenvolvido em WordPress para um cliente, a mesma aplicação que se chama Lar Perfeito, com o objetivo de apresentar as residências e terrenos à venda do cliente, servindo como forma de contato e catálogo.",
     techs: ["WordPress", "Banco de Dados", "PHP", "JavaScript", "Design"],
-    github: "https://github.com/seuusuario/projeto1",
-    deploy: "https://projeto1.vercel.app",
+    deploy: "https://larmaisqueperfeito.rf.gd/",
   },
   {
     id: 2,
@@ -269,8 +268,8 @@ const cards = [
     title: "Burguer & Brasa",
     description: "Uma experiência saborosa em forma de site, o Burguer & Brasa foi pensado para despertar o apetite com um visual marcante, animações envolventes e uma navegação que convida o cliente a fazer o pedido perfeito.",
     techs: ["HTML", "Tailwind", "JavaScript", "Design"],
-    github: "https://github.com/seuusuario/projeto2",
-    deploy: "https://projeto2.vercel.app",
+    github: "https://github.com/Raphael-Machado-Silva/Hamburgueria",
+    deploy: "https://raphael-machado-silva.github.io/Hamburgueria/",
   },
   {
     id: 3,
@@ -278,8 +277,8 @@ const cards = [
     title: "Previsão",
     description: "Este projeto é um site responsivo desenvolvido para oferecer uma experiência simples e intuitiva na consulta de previsões do tempo. Podendo logo pesquisar por qualquer cidade e obter rapidamente as condições climáticas atuais e dos próximos dias.",
     techs: ["React", "JavaScript", "CSS Modules", "API REST"],
-    github: "https://github.com/seuusuario/projeto3",
-    deploy: "https://projeto3.vercel.app",
+    github: "https://github.com/Raphael-Machado-Silva/Previs-o-do-Tempo",
+    deploy: "https://raphael-machado-silva.github.io/Previs-o-do-Tempo/",
   },
   {
     id: 4,
@@ -287,8 +286,8 @@ const cards = [
     title: "Chess Game",
     description: "Um desafio estratégico dentro e fora do tabuleiro. Esse projeto de xadrez foi desenvolvido do zero, com foco total na lógica do jogo, regras oficiais e uma interface pensada para oferecer uma experiência imersiva e inteligente ao jogador.",
     techs: ["React", "JavaScript", "CSS"],
-    github: "https://github.com/seuusuario/projeto4",
-    deploy: "https://projeto4.vercel.app",
+    github: "https://github.com/Raphael-Machado-Silva/Chess-Game",
+    deploy: "https://raphael-machado-silva.github.io/Chess-Game/",
   },
   {
     id: 5,
@@ -296,8 +295,7 @@ const cards = [
     title: "Aurora",
     description: "Aurora é uma loja virtual de roupas desenvolvida como meu primeiro projeto em WordPress. Nascido após a conclusão dos cursos de Wordpress, esse projeto marca o início da minha jornada com CMS, unindo praticidade, design e funcionalidade em uma vitrine online moderna.",
     techs: ["WordPress", "Banco de Dados", "PHP", "JavaScript", "Design"],
-    github: "https://github.com/seuusuario/projeto5",
-    deploy: "https://projeto5.vercel.app",
+    deploy: "https://www.linkedin.com/posts/raphael-machado-silva-74457a291_wordpress-webdesign-ecommerce-activity-7283094539408429057-ATdK?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEa9yqQBzrHL3_mFn9i3b1qOAeWAuMkC9ZI",
   },
   {
     id: 6,
@@ -305,8 +303,8 @@ const cards = [
     title: "Pop Corn Play",
     description: "PopcornPlay é uma plataforma interativa voltada para amantes de filmes e séries. Com uma interface moderna e intuitiva, permite explorar títulos, descobrir sinopses, trailers e avaliações, tudo em um só lugar. Uma verdadeira experiência cinematográfica direto do navegador.",
     techs: ["React", "JavaScript", "API REST", "CSS Modules"],
-    github: "https://github.com/seuusuario/projeto7",
-    deploy: "https://projeto7.vercel.app",
+    github: "https://github.com/Raphael-Machado-Silva/Projeto-Cinema",
+    deploy: "https://raphael-machado-silva.github.io/Projeto-Cinema/",
   },
   {
     id: 7,
@@ -314,17 +312,7 @@ const cards = [
     title: "Cadastro ",
     description: "Sistema completo de registro de usuários, com funcionalidades que vão desde o cadastro até a exibição dinâmica de dados. Um projeto que consolidou meus conhecimentos e me proporcionou uma experiência prática valiosa no desenvolvimento de aplicações modernas.",
     techs: ["React", "API REST", "Banco de Dados", "CSS"],
-    github: "https://github.com/seuusuario/projeto8",
-    deploy: "https://projeto8.vercel.app",
-  },
-  {
-    id: 8,
-    url: CommingSoon,
-    title: "Em Breve",
-    description: "Sistema completo de registro de usuários, com funcionalidades que vão desde o cadastro até a exibição dinâmica de dados. Um projeto que consolidou meus conhecimentos e me proporcionou uma experiência prática valiosa no desenvolvimento de aplicações modernas.",
-    techs: ["React", "API REST", "Banco de Dados", "CSS"],
-    github: "https://github.com/seuusuario/projeto8",
-    deploy: "https://projeto8.vercel.app",
+    github: "https://github.com/Raphael-Machado-Silva/API-Cadastro-de-Usu-rio",
   },
 ];
 
